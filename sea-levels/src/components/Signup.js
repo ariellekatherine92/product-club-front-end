@@ -1,6 +1,6 @@
 import React, {useRef} from 'react'
-import {From, Button, Card, Form} from 'react-bootstrap'
-import App from './App'
+import {Form, Button, Card, } from 'react-bootstrap'
+
 
 export default function Signup() {
     const emailRef = useRef()
