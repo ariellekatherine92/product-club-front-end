@@ -92,3 +92,30 @@ body {
     background: #00008b;
 }
 
+nav.page-nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    z-index: 100;
+    display: flex;
+    justify-content: flex-end;
+}
+
+nav.page-nav > ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around;
+    margin: 0;
+}
+
+nav.page-nav > ul > li {
+    padding: 1rem;
+}
+
+nav.page-nav > ul > li > a {
+    color: #fff;
+    text-decoration: none;
+}
+
