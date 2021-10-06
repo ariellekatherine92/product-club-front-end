@@ -7,3 +7,7 @@ The problem we chose to solve as a group is how raising sea levels contribute to
  ![First Wireframe](https://github.com/ariellekatherine92/product-club-front-end/blob/main/images/product-club-wireframe.png?raw=true) 
 
 For our initial wireframe/planning stage of this project we wanted it to be as user-friendly/concise as possible. We really wanted the design/UX to be clean and well organized. We wanted to ensure there was a login/signup option so people could save searches, and have their own profile. We want the home page to be clean and simple to get the point across directly to the consumer. Those who currently live in the floodzones will also have access to resources and suggestions for their area. 
+
+# Getting Started!/Technologies Used! 
+
+For this appication the technologies used include React.js, Bootstrap, and Firebase! When cloning down this repo make sure to npm install firebase, react-bootstrap and react-router-dom to ensure it will work properly. 
