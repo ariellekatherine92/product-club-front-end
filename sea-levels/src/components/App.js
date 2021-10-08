@@ -9,6 +9,7 @@ import ForgotPassword from "./ForgotPassword";
 import UpdateProfile from "./UpdateProfile";
 import LandingPage from "./LandingPage";
 import Navbar from "./Navbar";
+import About from "./About";
 import '../styles/app.css';
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
           <Route path= "/signup" component={Signup} />
           <Route path= "/login" component={Login} />
           <Route path= "/forgot-password" component={ForgotPassword} />
+          <Route path= "/about" component={About} />
         </Switch>
       </AuthProvider>
     </Router>
