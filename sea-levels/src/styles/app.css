@@ -119,3 +119,8 @@ nav.page-nav > ul > li > a {
     text-decoration: none;
 }
 
+about.our-mission {
+    text-align: center;
+    justify-content: center;
+}
+
