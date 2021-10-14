@@ -29,6 +29,7 @@ export default function Signup() {
             setError('Failed to create an account')
         }
         setLoading(false)
+        history.push(`/profile`)
     }
 
     return (
