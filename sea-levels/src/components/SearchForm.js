@@ -1,13 +1,20 @@
 import React, { useState, useCallback } from 'react';
+import { useHistory } from 'react-router-dom';
+import { datadogLogs } from '@datadog/browser-logs';
+
 // make some changes
 const SearchForm = () => {
+    const history = useHistory();
+
     const [locationInput, setLocationInput] = useState('');
 
     const onSubmit = useCallback(e => {
         e.preventDefault();
 
-        console.log(locationInput);
-    }, [locationInput]);
+        datadogLogs.logger.info('Form Submitted', { name: 'main-search-form', value: locationInput });
+
+        history.push(`map?location=${locationInput}`);
+    }, [locationInput, history]);
 
     return (
         <form className="search-form" onSubmit={onSubmit}>

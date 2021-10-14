@@ -12,9 +12,9 @@ export default function Navbar() {
                     <div className="signup-btn">
                         <Link to="/signup">Signup</Link>
                     </div>
-                    <li>
-                        <Link to="/about">About</Link>
-                    </li>
+                </li>
+                <li>
+                    <Link to="/about">About</Link>
                 </li>
             </ul>
         </nav>
