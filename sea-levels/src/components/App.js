@@ -1,4 +1,5 @@
-import React from "react";
+import React,{ useState } from "react";
+import { auth } from '../firebase'
 import Signup from './Signup';
 import AuthProvider from "../contexts/AuthContext";
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
@@ -13,6 +14,12 @@ import About from "./About";
 import '../styles/app.css';
 
 function App() {
+const [user, setUser] = useState({})
+  auth.onAuthStateChanged(user => {
+    if(user) {
+    setUser(user.uid)
+  }
+})
   return (
     <Router>
       <AuthProvider>
