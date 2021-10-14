@@ -10,6 +10,7 @@ import UpdateProfile from "./UpdateProfile";
 import LandingPage from "./LandingPage";
 import Navbar from "./Navbar";
 import About from "./About";
+import Map from "./Map";
 import '../styles/app.css';
 
 function App() {
@@ -21,10 +22,11 @@ function App() {
           <Route exact path ="/" component={LandingPage} />
           <PrivateRoute path="/dashboard" component={Dashboard} />
           <PrivateRoute path="/update-profile" component={UpdateProfile} />
-          <Route path= "/signup" component={Signup} />
-          <Route path= "/login" component={Login} />
-          <Route path= "/forgot-password" component={ForgotPassword} />
-          <Route path= "/about" component={About} />
+          <Route path="/signup" component={Signup} />
+          <Route path="/login" component={Login} />
+          <Route path="/forgot-password" component={ForgotPassword} />
+          <Route path="/about" component={About} />
+          <Route path="/map" component={Map} />
         </Switch>
       </AuthProvider>
     </Router>
