@@ -11,7 +11,12 @@ import LandingPage from "./LandingPage";
 import Navbar from "./Navbar";
 import About from "./About";
 import Map from "./Map";
+import WeatherWidget from "./WeatherWidget";
 import '../styles/app.css';
+import "weather-icons/css/weather-icons.css"
+
+//api call api.openweathermap.org/data/2.5/weather?q=London,uk&appid={API key}
+const API_key = '58944c43fae9ee14a34e9ff2936275eb'
 
 function App() {
   return (
@@ -27,6 +32,7 @@ function App() {
           <Route path="/forgot-password" component={ForgotPassword} />
           <Route path="/about" component={About} />
           <Route path="/map" component={Map} />
+          <Route path="/weather-widget" component={WeatherWidget} />
         </Switch>
       </AuthProvider>
     </Router>
