@@ -41,7 +41,7 @@ function App() {
   );
 }
 
-class weatherApp extends WeatherWidget {
+class weatherApp extends React.component {
   constructor() {
     super();
     this.state = {
