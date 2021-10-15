@@ -2,8 +2,10 @@ import React, {useState} from 'react'
 import {Button, Card, Alert} from 'react-bootstrap'
 import { useAuth } from '../contexts/AuthContext'
 import {Link, useHistory} from 'react-router-dom'
+import WeatherWidget from './WeatherWidget'
 
-export default function Dashboard() {
+
+export default function Dashboard({weather}) {
     const [error, setError] = useState("")
     const { currentUser, logout} = useAuth()
     const history = useHistory()
@@ -32,6 +34,9 @@ export default function Dashboard() {
             </Card>
             <div className="w-100 text-center mt-2">
                 <Button variant="link" onClick={handleLogout}>Log Out</Button>
+            </div>
+            <div className="weather-widget">
+                <WeatherWidget weather={weather} />
             </div>
             
         </>
