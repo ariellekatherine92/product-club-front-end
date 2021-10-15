@@ -124,7 +124,12 @@ about.our-mission {
     justify-content: center;
 }
 
-.weatherwidget.card {
+.weatherwidget {
     justify-content: center;
+    color: #000;
+}
+
+.dashboard {
+    color: #000;
 }
 

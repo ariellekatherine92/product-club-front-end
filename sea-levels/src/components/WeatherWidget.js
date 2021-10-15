@@ -1,44 +1,37 @@
 import React from 'react'
+import "weather-icons/css/weather-icons.css"
 
 
 const WeatherWidget = props => {
+    console.log(props.weather)
     return (
-        
-        <div className="container text-light">
+        <div className="container text-dark">
           <div className="Card">
-            <h1 className="text-white py-3">{props.cityname}</h1>
-            <h1>{props.weather.temp}</h1>
+            <h1 className="text-black py-3">{props.weather.cityname}</h1>
             <h5 className="py-4">
               <i className={`wi ${props.weatherIcon} display-1`} />
             </h5>
-    
+            
             {/* Get Celsius */}
             {props.temp_celsius ? (
               <h1 className="py-2">{props.temp_celsius}&deg;</h1>
             ) : null}
     
             {/* show max and min temp */}
-            {maxminTemp(props.temp_min, props.temp_max)}
+            {/* {maxminTemp(props.temp_min, props.temp_max)} */}
+
+            <span className="px-4">{props.weather.min}&deg;</span>
+            <span className="px-4">({props.weather.max*9/5+32})&deg;</span>
+             
     
             {/* Weather description */}
             <h4 className="py-3">
-              {props.description.charAt(0).toUpperCase() +
-                props.description.slice(1)}
+              {props.weather.description}
             </h4>
-          </div>
+           
+             </div>
         </div>
       );
     };
-    
-    function maxminTemp(min, max) {
-      if (max && min) {
-        return (
-          <h3>
-            <span className="px-4">{min}&deg;</span>
-            <span className="px-4">{max}&deg;</span>
-          </h3>
-        );
-      }
-    }
 
 export default WeatherWidget;
