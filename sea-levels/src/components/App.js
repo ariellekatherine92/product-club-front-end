@@ -1,4 +1,5 @@
-import React from "react";
+import React,{ useState } from "react";
+import { auth } from '../firebase'
 import {API_Key} from "../services"
 import { Form } from "react-bootstrap"
 import Signup from './Signup';
@@ -13,6 +14,7 @@ import LandingPage from "./LandingPage";
 import Navbar from "./Navbar";
 import About from "./About";
 import Map from "./Map";
+import Profile from "./Profile";
 import WeatherWidget from "./WeatherWidget";
 import Weather from "./WeatherWidget"
 import '../styles/app.css';
@@ -21,10 +23,17 @@ import "weather-icons/css/weather-icons.css"
 
 
 function App() {
+const [user, setUser] = useState({})
+  auth.onAuthStateChanged(user => {
+    if(user) {
+    setUser(user)
+    console.log(user)
+  }
+})
   return (
     <Router>
       <AuthProvider>
-        <Navbar />
+        {/* <Navbar /> */}
         <Switch>
           <Route exact path ="/" component={LandingPage} />
           <PrivateRoute path="/dashboard" component={Dashboard} />
@@ -35,6 +44,7 @@ function App() {
           <Route path="/about" component={About} />
           <Route path="/map" component={Map} />
           <Route path="/weather-widget" component={WeatherWidget} />
+          <Route path="/profile"> <Profile user={user}/> </Route>
         </Switch>
       </AuthProvider>
     </Router>
