@@ -1,31 +1,44 @@
 import React from 'react'
-import { Card } from 'react-bootstrap'
 
-export default function WeatherWidget() {
+
+const WeatherWidget = props => {
     return (
-        <div>
-            <Card>
-                <Card.Body>
-                    <h2 className="text-center mb-4">Current Weather Conditions</h2>
-                    <h5 className="py-4">
-                        <i className="wi wi-day-sunny display-1" />
-                    </h5>
-                    <h1 className="py-2">25&deg;</h1>
-
-                    {/** show max and min temp */}
-                    {minmaxTemp(24,19)}
-                    <h4 className="py-3">Slow Rain</h4>
-                </Card.Body>
-            </Card>
+        
+        <div className="container text-light">
+          <div className="Card">
+            <h1 className="text-white py-3">{props.cityname}</h1>
+            <h1>{props.weather.temp}</h1>
+            <h5 className="py-4">
+              <i className={`wi ${props.weatherIcon} display-1`} />
+            </h5>
+    
+            {/* Get Celsius */}
+            {props.temp_celsius ? (
+              <h1 className="py-2">{props.temp_celsius}&deg;</h1>
+            ) : null}
+    
+            {/* show max and min temp */}
+            {maxminTemp(props.temp_min, props.temp_max)}
+    
+            {/* Weather description */}
+            <h4 className="py-3">
+              {props.description.charAt(0).toUpperCase() +
+                props.description.slice(1)}
+            </h4>
+          </div>
         </div>
-    )
-
-    function minmaxTemp(min,max) {
+      );
+    };
+    
+    function maxminTemp(min, max) {
+      if (max && min) {
         return (
-            <h3>
-                <span className="px-4">{min}&deg;</span>
-                <span className="px-4">{max}&deg;</span>
-            </h3>
+          <h3>
+            <span className="px-4">{min}&deg;</span>
+            <span className="px-4">{max}&deg;</span>
+          </h3>
         );
+      }
     }
-}
+
+export default WeatherWidget;
