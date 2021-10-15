@@ -51,7 +51,7 @@ const [user, setUser] = useState({})
   );
 }
 
-class weatherApp extends React.component {
+class weatherApp extends WeatherWidget {
   constructor() {
     super();
     this.state = {
