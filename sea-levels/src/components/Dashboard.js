@@ -5,7 +5,7 @@ import {Link, useHistory} from 'react-router-dom'
 import WeatherWidget from './WeatherWidget'
 
 
-export default function Dashboard({weather}) {
+export default function Dashboard(props) {
     const [error, setError] = useState("")
     const { currentUser, logout} = useAuth()
     const history = useHistory()
@@ -24,6 +24,9 @@ export default function Dashboard({weather}) {
         <> 
             <Card>
                 <Card.Body>
+                <div className="weather-widget">
+                <WeatherWidget weather={props.weather} />
+            </div>
                 <h2 className="text-center mb-4">Profile</h2>
                 {error && <Alert variant= "danger"> {error} </Alert>}
                 <strong>Email: </strong> {currentUser.email}
@@ -35,10 +38,7 @@ export default function Dashboard({weather}) {
             <div className="w-100 text-center mt-2">
                 <Button variant="link" onClick={handleLogout}>Log Out</Button>
             </div>
-            <div className="weather-widget">
-                <WeatherWidget weather={weather} />
-            </div>
-            
+           
         </>
     )
 }

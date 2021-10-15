@@ -1,6 +1,6 @@
 import React,{ useState, useEffect} from "react";
 import { auth } from '../firebase'
-import {API_Key} from "../services"
+import { baseURL } from "../services";
 import { Form } from "react-bootstrap"
 import Signup from './Signup';
 import AuthProvider from "../contexts/AuthContext";
@@ -15,10 +15,7 @@ import Navbar from "./Navbar";
 import About from "./About";
 import Map from "./Map";
 import Profile from "./Profile";
-import WeatherWidget from "./WeatherWidget";
-import Weather from "./WeatherWidget"
 import '../styles/app.css';
-import "weather-icons/css/weather-icons.css"
 import axios from "axios";
 
 // class weatherApp extends React.Component {
@@ -142,9 +139,11 @@ const [weather, setWeather] = useState ([])
 const [user, setUser] = useState({})
 useEffect(() => {
  const fetchWeather = async () => {
-   const response = await axios.get(`http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=${API_Key}`)
+   const response = await axios.get(baseURL)
    setWeather(response)
- }
+   console.log(response)
+ } 
+ fetchWeather()
 }, [])
   auth.onAuthStateChanged(user => {
     if(user) {
