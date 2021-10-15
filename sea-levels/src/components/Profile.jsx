@@ -24,7 +24,6 @@ const Profile = ({user}) => {
     event.preventDefault()
     const db = app.firestore()
     const data = await db.collection('users').doc(user.uid).set({...form})
-    console.log(user)
   }
 
   return (
