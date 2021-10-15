@@ -21,10 +21,10 @@ export default function Dashboard(props) {
   }
   return (
     <>
+      <WeatherWidget weather={props.weather} />
       <Card>
         <Card.Body>
           <div className="weather-widget">
-            <WeatherWidget weather={props.weather} />
           </div>
           <h2 className="text-center mb-4">Profile</h2>
           {error && <Alert variant="danger"> {error} </Alert>}
