@@ -33,7 +33,7 @@ const [user, setUser] = useState({})
   return (
     <Router>
       <AuthProvider>
-        {/* <Navbar /> */}
+        <Navbar />
         <Switch>
           <Route exact path ="/" component={LandingPage} />
           <PrivateRoute path="/dashboard" component={Dashboard} />
