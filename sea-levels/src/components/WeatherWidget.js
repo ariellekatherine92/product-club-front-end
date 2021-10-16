@@ -5,7 +5,7 @@ const WeatherWidget = ({weather}) => {
   console.log('WEATHER',weather);
   return (
     <div className="container text-dark">
-      <h1>Weather Widget</h1>
+      <h1>Weather Widget!</h1>
       <img src={weather.properties?.periods[0].icon} alt="" />
       <h2>Temp {weather.properties?.periods[0].temperature}</h2>
       <h2>Wind Speeds {weather.properties?.periods[0].windSpeed} {weather.properties?.periods[0].windDirection}</h2>
