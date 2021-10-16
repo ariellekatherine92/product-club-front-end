@@ -168,3 +168,18 @@ nav.page-nav > ul > li > a > .signup-btn {
 .mission-statement .description-container .our-mission p {
 
 }
+
+.signup-wrapper {
+    align-items: center;
+    padding: 100px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.signup-wrapper .signup-form {
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+    margin: 50px;
+    
+}
