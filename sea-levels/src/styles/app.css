@@ -134,6 +134,7 @@ nav.page-nav > ul > li > a > .signup-btn {
 .mission-statement {
     background: #8C90B7;
     padding: 5%;
+    min-height: 100vh;
 }
 
 .mission-statement h1 {
@@ -147,10 +148,11 @@ nav.page-nav > ul > li > a > .signup-btn {
 
 .mission-statement .description-container {
     display: flex;
+
 }
 
 .mission-statement .description-container .our-mission {
-
+    
 }
 
 .mission-statement .description-container .our-mission .image-wrapper {
@@ -159,7 +161,6 @@ nav.page-nav > ul > li > a > .signup-btn {
     height: 250px;
     left: 0px;
     top: 0px;
-    
     background: #C4C4C4;
     border-radius: 30px;
 }
