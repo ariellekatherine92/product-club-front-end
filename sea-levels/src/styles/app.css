@@ -131,19 +131,39 @@ nav.page-nav > ul > li > a > .signup-btn {
     border-radius: 3px;
 }
 
-nav.page-nav > ul > li > .signup-btn
+.mission-statement {
+    background: #8C90B7;
+    padding: 5%;
+}
 
-about.our-mission {
+.mission-statement h1 {
     text-align: center;
-    justify-content: center;
+    font-family: Futura-Bold;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 48px;
+    margin-bottom: 75px;
 }
 
-.weatherwidget {
-    justify-content: center;
-    color: #000;
+.mission-statement .description-container {
+    display: flex;
 }
 
-.dashboard {
-    color: #000;
+.mission-statement .description-container .our-mission {
+
 }
 
+.mission-statement .description-container .our-mission .image-wrapper {
+    position: static;
+    width: 250px;
+    height: 250px;
+    left: 0px;
+    top: 0px;
+    
+    background: #C4C4C4;
+    border-radius: 30px;
+}
+
+.mission-statement .description-container .our-mission p {
+
+}
