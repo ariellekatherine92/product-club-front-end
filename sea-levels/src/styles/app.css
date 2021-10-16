@@ -55,6 +55,7 @@ body {
     font-size: 32px;
     font-weight: 500;
     margin: 2rem 0;
+    width: 399px;
 }
 
 .search-form {
@@ -63,11 +64,13 @@ body {
 
 .search-form input {
     width: 300px;
+    margin-right: 8px;
     padding: 0 20px;
     height: 40px;
-    border-radius: 4px 0 0 4px;
-    border: 1px solid #000;
+    border-radius: 100px;
+    border: 1px solid #E8E8E8;
     font-size: 16px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
 .search-form input:focus-visible {
@@ -77,19 +80,20 @@ body {
 }
 
 .search-form button {
-    background: #1A1A1A;
+    background: #624F6D;
     color: #fff;
     padding: 0 20px;
-    border-radius: 0 4px 4px 0;
+    border-radius: 100px;
     border: none;
     outline: none;
     height: 40px;
     font-size: 16px;
     transition: background 250ms;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
 .search-form button:hover {
-    background: #00008b;
+    background: #000000;
 }
 
 nav.page-nav {
@@ -107,6 +111,7 @@ nav.page-nav > ul {
     list-style-type: none;
     display: flex;
     justify-content: space-around;
+    align-items: center;
     margin: 0;
 }
 
@@ -115,21 +120,50 @@ nav.page-nav > ul > li {
 }
 
 nav.page-nav > ul > li > a {
-    color: #fff;
+    color: #000;
     text-decoration: none;
 }
 
-about.our-mission {
+nav.page-nav > ul > li > a > .signup-btn {
+    color: #fff;
+    background: blue;
+    padding: 6px;
+    border-radius: 3px;
+}
+
+.mission-statement {
+    background: #8C90B7;
+    padding: 5%;
+}
+
+.mission-statement h1 {
     text-align: center;
-    justify-content: center;
+    font-family: Futura-Bold;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 48px;
+    margin-bottom: 75px;
 }
 
-.weatherwidget {
-    justify-content: center;
-    color: #000;
+.mission-statement .description-container {
+    display: flex;
 }
 
-.dashboard {
-    color: #000;
+.mission-statement .description-container .our-mission {
+
 }
 
+.mission-statement .description-container .our-mission .image-wrapper {
+    position: static;
+    width: 250px;
+    height: 250px;
+    left: 0px;
+    top: 0px;
+    
+    background: #C4C4C4;
+    border-radius: 30px;
+}
+
+.mission-statement .description-container .our-mission p {
+
+}
