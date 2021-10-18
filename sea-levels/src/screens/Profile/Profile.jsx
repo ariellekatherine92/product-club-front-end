@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import app from '../firebase'
+import app from '../../services/firebase'
 
 const Profile = ({user}) => {
   const [form, setForm] = useState({

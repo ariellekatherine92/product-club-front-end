@@ -1,37 +1,52 @@
 import React, { useState, useEffect } from "react";
-import { auth } from "../firebase";
+import { auth } from "../services/firebase";
+import app from '../services/firebase'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import axios from "axios";
-import Signup from "./Signup";
+import Signup from "../screens/SignUp/Signup";
 import AuthProvider from "../contexts/AuthContext";
-import Dashboard from "./Dashboard";
-import Login from "./Login";
+import Dashboard from "../screens/Dashboard/Dashboard";
+import Login from "../screens/Login/Login";
 import PrivateRoute from "./PrivateRoute";
 import ForgotPassword from "./ForgotPassword";
-import UpdateProfile from "./UpdateProfile";
-import LandingPage from "./LandingPage";
+import UpdateProfile from "../screens/UpdateProfile/UpdateProfile";
+import LandingPage from "../screens/LandingPage/LandingPage";
 import Navbar from "./Navbar";
-import About from "./About";
+import About from "../screens/About/About";
 import Map from "./Map";
-import Profile from "./Profile";
+import Profile from "../screens/Profile/Profile";
 import "../styles/app.css";
+import { useSelector } from "react-redux";
 
 function App() {
-  const [weather, setWeather] = useState([])
-  const [user, setUser] = useState({});
+  const [weather, setWeather] = useState([]);
+  const [user, setUser] = useState('');
+  const [town, setTown] = useState('');
+  const location = useSelector((state) => state.location)
   
   //Gets user objects
   auth.onAuthStateChanged((user) => {
     if (user) {
-      setUser(user);
+      setUser(user.uid);
     }
   });
-
+  console.log('test',user)
   useEffect(() => {
     const fetchData = async () => {
       try {
+        
+        const db = app.firestore()
+        const doc = await db.collection(`users`).doc(user).get()
+        const userInfo = doc.data()
+        const town = userInfo.town
+        setTown(town)
+        
+        
+        console.log('Town',town)
+        
+
         const responseOne = await axios.get(
-          `http://api.openweathermap.org/data/2.5/weather?q=Providence,usa&appid=${process.env.REACT_APP_API_KEY}`
+          `http://api.openweathermap.org/data/2.5/weather?q=${location},usa&appid=${process.env.REACT_APP_API_KEY}`
         );
         const coordinates = responseOne.data;
         let longitude = coordinates?.coord.lon;
@@ -56,7 +71,7 @@ function App() {
 
     };
     fetchData();
-  }, []);
+  }, [location]);
 
 
   return (
@@ -75,7 +90,7 @@ function App() {
             <Profile user={user} />
           </Route>
           <Route path="/dashboard" >
-            <Dashboard weather={weather}/>
+            <Dashboard weather={weather} town={town}/>
           </Route>
         </Switch>
       </AuthProvider>

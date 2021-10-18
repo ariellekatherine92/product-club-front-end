@@ -1,9 +1,11 @@
 import React, { useState, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 import { datadogLogs } from '@datadog/browser-logs';
+import { connect } from 'react-redux'
+import { addLocation } from '../action';
 
 // make some changes
-const SearchForm = () => {
+const SearchForm = (props) => {
     const history = useHistory();
 
     const [locationInput, setLocationInput] = useState('');
@@ -12,7 +14,7 @@ const SearchForm = () => {
         e.preventDefault();
 
         datadogLogs.logger.info('Form Submitted', { name: 'main-search-form', value: locationInput });
-
+        props.addLocation(`${locationInput}`)
         history.push(`map?location=${locationInput}`);
     }, [locationInput, history]);
 
@@ -32,4 +34,10 @@ const SearchForm = () => {
     )
 };
 
-export default SearchForm;
+
+
+const mapDispatchToProps = dispatch => {
+  return { addLocation: text => dispatch(addLocation(text))};
+  };
+
+  export default connect(null, mapDispatchToProps)(SearchForm);

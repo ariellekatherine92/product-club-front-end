@@ -1,5 +1,5 @@
 import React from 'react';
-import SearchForm from './SearchForm';
+import SearchForm from '../../components/SearchForm';
 
 export default function LandingPage() {
     return (

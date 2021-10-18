@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Button, Card, Alert } from "react-bootstrap";
-import { useAuth } from "../contexts/AuthContext";
+import { useAuth } from "../../contexts/AuthContext";
 import { Link, useHistory } from "react-router-dom";
-import WeatherWidget from "./WeatherWidget";
+import WeatherWidget from "../../components/WeatherWidget";
 
 export default function Dashboard(props) {
   const [error, setError] = useState("");
@@ -21,7 +21,7 @@ export default function Dashboard(props) {
   }
   return (
     <>
-      <WeatherWidget weather={props.weather} />
+      <WeatherWidget weather={props.weather} town={props.town}/>
       <Card>
         <Card.Body>
           <div className="weather-widget">
