@@ -1,6 +1,34 @@
-.main-safe .h1 {
-    font-family: Futura;
-    align-items: center;
+.main-safe .safe-header {
     text-align: center;
+    font-family: Futura-Bold;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 48px;
+    margin-bottom: 75px;
 }
+
+.main-safe {
+    display: flex;
+}
+
+.main-safe .image-1 {
+    background-image: url("../images/mary.png");
+    position: static;
+    width: 250px;
+    height: 250px;
+    left: 0px;
+    top: 0px;
+    border-radius: 30px;
+}
+
+.main-safe .image-2 {
+    background-image: url("../images/gary.png");
+    position: static;
+    width: 250px;
+    height: 250px;
+    left: 0px;
+    top: 0px;
+    border-radius: 30px;
+}
+
 

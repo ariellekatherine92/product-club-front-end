@@ -1,9 +1,10 @@
 import React from 'react'
-import { Container } from 'react-bootstrap'
+import "./safe.css"
+
 
 export default function Safe() {
     return (
-    <Container className="main-safe">
+    <div className="main-safe">
         <div className = "safe-header">
             <h1>Stay safe. Stay Connected.</h1>
         </div>
@@ -16,7 +17,7 @@ export default function Safe() {
         <div className="winter-storm">
 
         </div>
-    </Container>
+    </div>
 
     )
 }

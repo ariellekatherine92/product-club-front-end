@@ -6,6 +6,13 @@ export default function Navbar() {
         <nav className="page-nav">
             <ul>
                 <li>
+                <Link to="SOS">
+                    <div className="sos-btn">
+                        SOS
+                    </div>
+                </Link>
+                </li>
+                <li>
                 <Link to="/">Home</Link>
                 </li>
                 <li>
