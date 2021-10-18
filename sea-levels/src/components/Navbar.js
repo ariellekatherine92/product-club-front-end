@@ -6,17 +6,32 @@ export default function Navbar() {
         <nav className="page-nav">
             <ul>
                 <li>
+                <Link to="/">Home</Link>
+                </li>
+                <li>
+                    <Link to="/about">About</Link>
+                </li>
+                <li>
+                    <Link to="/FAQ">FAQ</Link>
+                </li>
+                <li>
+                    <Link to="/Map">Map</Link>
+                </li>
+                <li>
                     <Link to="/login">Login</Link>
                 </li>
                 <li>
-                    <div className="signup-btn">
-                        <Link to="/signup">Signup</Link>
-                    </div>
-                    <li>
-                        <Link to="/about">About</Link>
-                    </li>
+                  <Link to="/dashboard">Dashboard</Link>
+                </li>
+                <li>
+                    <Link to="/signup">
+                        <div className="signup-btn">
+                            Signup
+                        </div>
+                    </Link>
                 </li>
             </ul>
         </nav>
     )
+
 }
