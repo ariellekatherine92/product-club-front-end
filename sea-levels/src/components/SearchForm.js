@@ -15,7 +15,7 @@ const SearchForm = (props) => {
 
         datadogLogs.logger.info('Form Submitted', { name: 'main-search-form', value: locationInput });
         props.addLocation(`${locationInput}`)
-        history.push(`map?location=${locationInput}`);
+        history.push(`/dashboard`);
     }, [locationInput, history]);
 
     return (

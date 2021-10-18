@@ -12,19 +12,7 @@ export default function Navbar() {
                 <Link to="/dashboard">Dashboard</Link>
                 </li>
                 <li>
-                    <Link to="/about">About</Link>
-                </li>
-                <li>
-                    <Link to="/FAQ">FAQ</Link>
-                </li>
-                <li>
-                    <Link to="/Map">Map</Link>
-                </li>
-                <li>
                     <Link to="/login">Login</Link>
-                </li>
-                <li>
-                  <Link to="/dashboard">Dashboard</Link>
                 </li>
                 <li>
                     <Link to="/signup">

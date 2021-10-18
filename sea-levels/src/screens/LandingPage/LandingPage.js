@@ -11,6 +11,8 @@ export default function LandingPage() {
                     search your city now.</h3>
 
                 <SearchForm />
+
+
             </div>
         </section>
     );
