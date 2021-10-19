@@ -17,14 +17,21 @@ import Map from "./Map";
 import Profile from "../screens/Profile/Profile";
 import "../styles/app.css";
 import { useSelector } from "react-redux";
-import Popup from './Popup'
+import Sos from "./Sos/Sos";
 import Main from "../screens/Main";
 
 function App() {
   const [weather, setWeather] = useState([]);
   const [user, setUser] = useState('');
   const [town, setTown] = useState('');
+  const [isOpen, setIsOpen] = useState(false);
   const location = useSelector((state) => state.location)
+
+
+  //Sos popup
+  const togglePop = () => {
+    setIsOpen(!isOpen)
+  }
   
   //Gets user objects
   auth.onAuthStateChanged((user) => {
@@ -79,7 +86,8 @@ function App() {
   return (
     <Router>
       <AuthProvider>
-        {/* <Navbar /> */}
+        <Navbar setIsOpen={setIsOpen} isOpen={isOpen}/>
+          {isOpen ? <Sos user={user} setIsOpen={setIsOpen} isOpen={isOpen}/> : ''}
         <Switch>
           <Route exact path="/"component={Main} />
           <PrivateRoute path="/update-profile" component={UpdateProfile} />
@@ -87,7 +95,6 @@ function App() {
           <Route path="/login" component={Login} />
           <Route path="/forgot-password" component={ForgotPassword} />
           <Route path="/map" component={Map} />
-          <Route path='/popup' component={Popup} />
           <Route path="/profile">
             <Profile user={user} />
           </Route>
