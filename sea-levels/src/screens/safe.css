@@ -12,16 +12,6 @@
 }
 
 .main-safe .image-1 {
-    background-image: url("../images/mary.png");
-    position: static;
-    width: 250px;
-    height: 250px;
-    left: 0px;
-    top: 0px;
-    border-radius: 30px;
-}
-
-.main-safe .image-2 {
     background-image: url("../images/gary.png");
     position: static;
     width: 250px;
@@ -29,6 +19,109 @@
     left: 0px;
     top: 0px;
     border-radius: 30px;
+    margin-top: 180px;
+    margin-left: 100px;
 }
+
+.main-safe .image-2 {
+    background-image: url("../images/mary.png");
+    position: static;
+    width: 250px;
+    height: 250px;
+    left: 0px;
+    top: 0px;
+    border-radius: 30px;
+    margin-top: 180px;
+    margin-left: 100px;
+}
+
+.main-safe .winter-storm {
+    background-image: url("../images/snowstorm.png");
+    position: static;
+    width: 250px;
+    height: 250px;
+    left: 0px;
+    top: 0px;
+    border-radius: 30px;
+    margin-top: 180px;
+    margin-left: 100px;
+}
+
+.main-safe .lonely-man {
+    background-image: url("../images/lonelyman.png");
+    position: static;
+    width: 250px;
+    height: 250px;
+    left: 0px;
+    top: 0px;
+    border-radius: 30px;
+    margin-top: 180px;
+    margin-left: 100px;
+}
+
+.main-safe .prepared {
+    background-image: url("../images/prepared.png");
+    position: static;
+    width: 250px;
+    height: 250px;
+    left: 0px;
+    top: 0px;
+    border-radius: 30px;
+    margin-top: 180px;
+    margin-left: 100px;
+}
+
+.main-safe .supplies {
+    background-image: url("../images/supplies.png");
+    position: static;
+    width: 250px;
+    height: 250px;
+    left: 0px;
+    top: 0px;
+    border-radius: 30px;
+    margin-top: 180px;
+    margin-left: 100px;
+}
+
+.main-safe .flashlight {
+    background-image: url("../images/flashlight.png");
+    position: static;
+    width: 250px;
+    height: 250px;
+    left: 0px;
+    top: 0px;
+    border-radius: 30px;
+    margin-top: 180px;
+    margin-left: 100px;
+}
+
+.main-safe .broken-phone {
+    background-image: url("../images/broken-phone.png");
+    position: static;
+    width: 250px;
+    height: 250px;
+    left: 0px;
+    top: 0px;
+    border-radius: 30px;
+    margin-top: 180px;
+    margin-left: 100px;
+}
+
+.main-safe .door {
+    background-image: url("../images/door.png");
+    position: static;
+    width: 250px;
+    height: 250px;
+    left: 0px;
+    top: 0px;
+    border-radius: 30px;
+    margin-top: 180px;
+    margin-left: 100px;
+}
+
+
+
+
+
 
 
