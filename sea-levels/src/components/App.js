@@ -87,7 +87,7 @@ function App() {
     <Router>
       <AuthProvider>
         <Navbar setIsOpen={setIsOpen} isOpen={isOpen}/>
-          {isOpen ? <Sos setIsOpen={setIsOpen} isOpen={isOpen}/> : ''}
+          {isOpen ? <Sos user={user} setIsOpen={setIsOpen} isOpen={isOpen}/> : ''}
         <Switch>
           <Route exact path="/"component={Main} />
           <PrivateRoute path="/update-profile" component={UpdateProfile} />
