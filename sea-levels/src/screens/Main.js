@@ -2,6 +2,7 @@ import About from "./About/About";
 import LandingPage from "./LandingPage/LandingPage";
 import Safe from "./Safe";
 import React from 'react'
+import Footer from "../components/Footer";
 
 export default function Main() {
     return (
@@ -9,6 +10,7 @@ export default function Main() {
             <LandingPage />
             <About />
             <Safe />
+            <Footer />
         </div>
     )
 }
