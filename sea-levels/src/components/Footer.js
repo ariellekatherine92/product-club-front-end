@@ -45,6 +45,9 @@ export default function Footer() {
                 Subscribe
             </button>
             </div>
+            <div className="copyright">
+                <p>Copyright © 2021 · All Rights Reserved · Waterproof, LLC</p>
+            </div>
         </div>
     )
 }
