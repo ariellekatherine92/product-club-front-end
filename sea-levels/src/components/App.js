@@ -17,6 +17,7 @@ import Map from "./Map";
 import Profile from "../screens/Profile/Profile";
 import "../styles/app.css";
 import { useSelector } from "react-redux";
+import Popup from './Popup'
 import Main from "../screens/Main";
 
 function App() {
@@ -78,7 +79,7 @@ function App() {
   return (
     <Router>
       <AuthProvider>
-        <Navbar />
+        {/* <Navbar /> */}
         <Switch>
           <Route exact path="/"component={Main} />
           <PrivateRoute path="/update-profile" component={UpdateProfile} />
@@ -86,6 +87,7 @@ function App() {
           <Route path="/login" component={Login} />
           <Route path="/forgot-password" component={ForgotPassword} />
           <Route path="/map" component={Map} />
+          <Route path='/popup' component={Popup} />
           <Route path="/profile">
             <Profile user={user} />
           </Route>
