@@ -1,8 +1,15 @@
-.footer-main .title-heading{
-    background-color: black;
+.footer-main {
+    background-color: #202020;
     font-family: Roboto;
     color: #FFFFFF;
-    ;
+}
+
+.footer-main .title-heading {
+    position: absolute;
+    font-weight: bold;
+    font-size: 45px;
+    display: flex;
+    align-items: center;
 }
 
 .footer-main .about-links {
