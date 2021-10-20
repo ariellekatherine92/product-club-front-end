@@ -10,9 +10,7 @@ import Login from "../screens/Login/Login";
 import PrivateRoute from "./PrivateRoute";
 import ForgotPassword from "./ForgotPassword";
 import UpdateProfile from "../screens/UpdateProfile/UpdateProfile";
-import LandingPage from "../screens/LandingPage/LandingPage";
 import Navbar from "./Navbar";
-import About from "../screens/About/About";
 import Map from "./Map";
 import Profile from "../screens/Profile/Profile";
 import "../styles/app.css";
@@ -35,17 +33,17 @@ function App() {
       setUser(user.uid);
     }
   });
-  console.log("test", user);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const db = app.firestore();
-        const doc = await db.collection(`users`).doc(user).get();
-        const userInfo = doc.data();
-        const town = userInfo.town;
-        setTown(town);
+        // const db = app.firestore();
+        // const doc = await db.collection(`users`).doc(user).get();
+        // const userInfo = doc.data();
+        // const town = userInfo.town;
+        // setTown(town);
 
-        console.log("Town", town);
+        // console.log("Town", town);
 
         const responseOne = await axios.get(
           `http://api.openweathermap.org/data/2.5/weather?q=${location},usa&appid=${process.env.REACT_APP_API_KEY}`
@@ -53,26 +51,30 @@ function App() {
         const coordinates = responseOne.data;
         let longitude = coordinates?.coord.lon;
         let latitude = coordinates?.coord.lat;
-
+        console.log({latitude,longitude})
+        
         const responseTwo = await axios.get(
           `https://api.weather.gov/points/${latitude},${longitude}`
-        );
-        const grid = responseTwo.data.properties;
-        let office = grid?.gridId;
-        let gridX = grid?.gridX;
-        let gridY = grid?.gridY;
-
+          );
+          const grid = responseTwo.data.properties;
+          console.log({grid})
+          let office = grid?.gridId;
+          let gridX = grid?.gridX;
+          let gridY = grid?.gridY;
+          console.log({office,gridX,gridY})
+          
         const responseThree = await axios.get(
-          `https://api.weather.gov/gridpoints/${office}/${gridX},${gridY}/forecast`
+          `https://api.weather.gov/gridpoints/${office}/${gridX},${gridY}/forecast/hourly`
         );
         const weatherData = responseThree.data;
         setWeather(weatherData);
+        console.log('New Weather',weatherData)
       } catch (error) {
         console.log(error);
       }
     };
     fetchData();
-  }, [location]);
+  }, [location, user]);
 
   return (
     <Router>

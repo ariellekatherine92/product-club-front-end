@@ -7,7 +7,7 @@ const Emergencies = (props) => {
   useEffect(() => {
     const fetchAlerts = async () => {
       const db = app.firestore();
-      const doc = await db
+      await db
         .collection(`emergencies`)
         .get()
         .then((querySnapshot) => {
