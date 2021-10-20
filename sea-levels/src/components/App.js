@@ -18,7 +18,10 @@ import { useSelector } from "react-redux";
 import Sos from "./Sos/Sos";
 import Main from "../screens/Main";
 import Emergencies from "../screens/Emergencies/Emergencies";
-console.log(process.env.REACT_APP_API_KEY)
+import About_Us from "./About_Us";
+import Blog from "./Blog";
+import Contact from "./Contact";
+
 
 function App() {
   const [weather, setWeather] = useState([]);
@@ -75,6 +78,9 @@ function App() {
           <Route path="/login" component={Login} />
           <Route path="/forgot-password" component={ForgotPassword} />
           <Route path="/map" component={Map} />
+          <Route path="/about-us" component={About_Us} />
+          <Route path="/blog" component={Blog} />
+          <Route path="/contact" component={Contact} />
           <Route path="/emergencies">
             <Emergencies toggle={toggleFetch} setToggle={setToggleFetch} user={user} />
           </Route>

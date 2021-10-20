@@ -32,7 +32,7 @@ export default function Safe() {
                 </div>
 
                 <div className="item">
-                    <h5>Madeline Knew in advance.</h5>
+                    <h5>Madeline knew in advance.</h5>
                     <div className="image-wrapper prepared" />
                 </div>
             </div>
@@ -64,7 +64,7 @@ export default function Safe() {
             <h2>You can be like Madeline too.</h2>
             
             <div className="btn-wrapper">
-                <button>Join Waterproof</button>
+                <button>Join Weather Together</button>
             </div>
         </div>
     );
