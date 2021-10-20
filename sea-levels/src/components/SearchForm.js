@@ -23,7 +23,7 @@ const SearchForm = (props) => {
             <input 
                 type="text" 
                 name="location"
-                placeholder="Enter an Address or Zip Code"
+                placeholder="Enter a Zip Code"
                 onChange={({ target }) => setLocationInput(target.value)}
             />
             <button 

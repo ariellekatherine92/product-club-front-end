@@ -22,6 +22,7 @@ import About_Us from "./About_Us";
 import Blog from "./Blog";
 import Contact from "./Contact";
 
+
 function App() {
   const [weather, setWeather] = useState([]);
   const [user, setUser] = useState("");
@@ -48,30 +49,12 @@ function App() {
 
         // console.log("Town", town);
 
-        const responseOne = await axios.get(
-          `http://api.openweathermap.org/data/2.5/weather?q=${location},usa&appid=${process.env.REACT_APP_API_KEY}`
+        const responseOne = await axios.get(`https://api.weatherapi.com/v1/current.json?key=${process.env.REACT_APP_API_KEY}&q=${location}&aqi=no`
         );
-        const coordinates = responseOne.data;
-        let longitude = coordinates?.coord.lon;
-        let latitude = coordinates?.coord.lat;
-        console.log({latitude,longitude})
+        console.log('key',process.env.REACT_APP_WEATHER_API_KEY)
+        const weatherInfo = responseOne.data;
+        console.log(weatherInfo)
         
-        const responseTwo = await axios.get(
-          `https://api.weather.gov/points/${latitude},${longitude}`
-          );
-          const grid = responseTwo.data.properties;
-          console.log({grid})
-          let office = grid?.gridId;
-          let gridX = grid?.gridX;
-          let gridY = grid?.gridY;
-          console.log({office,gridX,gridY})
-          
-        const responseThree = await axios.get(
-          `https://api.weather.gov/gridpoints/${office}/${gridX},${gridY}/forecast/hourly`
-        );
-        const weatherData = responseThree.data;
-        setWeather(weatherData);
-        console.log('New Weather',weatherData)
       } catch (error) {
         console.log(error);
       }
