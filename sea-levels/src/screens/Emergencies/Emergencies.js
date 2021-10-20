@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import app from "../../services/firebase";
 
-const Emergencies = ({ user }) => {
+const Emergencies = (props) => {
   const [alerts, setAlerts] = useState([]);
 
   useEffect(() => {
@@ -13,14 +13,15 @@ const Emergencies = ({ user }) => {
         .then((querySnapshot) => {
           const data = querySnapshot.docs.map((doc) => doc.data());
           setAlerts(data);
+          props.setToggle(!props.toggle)
         });
     };
     fetchAlerts();
-  }, []);
+  }, [props.toggle]);
 
   return (
     <div>
-      <h1>Ongoing Emegencies</h1>
+      <h1>Ongoing Emergencies</h1>
       <ul>
         {alerts.map((alert) => (
           <ol>

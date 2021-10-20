@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom"
 import app from "../../services/firebase";
 import './Sos.css'
 
 const Sos = (props) => {
+  const [alert, setAlert] = useState({})
   const [form, setForm] = useState({
     name: "",
     location: "",
@@ -12,7 +13,29 @@ const Sos = (props) => {
     dateTime: new Date().toLocaleString(),
     active: false,
   });
-  const history = useHistory()
+  
+  const history = useHistory();
+
+  const deleteAlert = async () => {
+    try {
+      const db = app.firestore()
+      const removeFields = await db.collection('emergencies').doc(props.user).update({})
+      const removeDocs = await db.collection('emergencies').doc(props.user).delete()
+  } catch (error) {
+    console.log(error)
+    }
+  }
+
+  useEffect(() => {
+    const getOneEmergence = async () => {
+      const db = app.firestore()
+      const fetchOneEmergence = await db.collection('emergencies').doc(props.user).get()
+      const oneEmergence = fetchOneEmergence.data();
+      setAlert(oneEmergence)
+    }
+    getOneEmergence()
+  },[deleteAlert]);
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -31,8 +54,11 @@ const Sos = (props) => {
     } catch(error) {
       throw Error
     }
+    props.setToggle(!props.Toggle)
+    props.setIsOpen(!props.isOpen)
     history.push('/emergencies')
   };
+
 
   return (
     <div className="popup-box">
@@ -65,13 +91,6 @@ const Sos = (props) => {
           value={form.type}
           onChange={handleChange}
         />
-        {/* <input
-          type="datetime-local"
-          placeholder="Date"
-          name="dateTime"
-          value={dateFormate.toLocaleDateString("en-US")}
-          onChange={handleChange}
-        /> */}
         <label htmlFor="active"> Active</label>
         <input
           type="radio"
@@ -84,6 +103,8 @@ const Sos = (props) => {
         <button type="submit">Submit</button>
       <button className='close-icon' onClick={() => props.setIsOpen(!props.isOpen)}>X</button>
       {props.content}
+      {alert ? <div>{alert?.name} {alert?.location} {alert?.needs} {alert?.type} <button onClick={deleteAlert}>X</button></div>:''}
+      
       </form>
     </div>
   );
