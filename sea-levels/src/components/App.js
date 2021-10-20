@@ -26,6 +26,7 @@ function App() {
   const [user, setUser] = useState("");
   const [town, setTown] = useState("");
   const [isOpen, setIsOpen] = useState(false);
+  const [toggleFetch, setToggleFetch] = useState(false);
   const location = useSelector((state) => state.location);
 
  //Gets user objects
@@ -78,7 +79,7 @@ function App() {
       <AuthProvider>
         <Navbar setIsOpen={setIsOpen} isOpen={isOpen} />
         {isOpen ? (
-          <Sos user={user} setIsOpen={setIsOpen} isOpen={isOpen} />
+          <Sos user={user} setIsOpen={setIsOpen} isOpen={isOpen} toggle={toggleFetch} setToggle={setToggleFetch}/>
         ) : (
           ""
         )}
@@ -90,7 +91,7 @@ function App() {
           <Route path="/forgot-password" component={ForgotPassword} />
           <Route path="/map" component={Map} />
           <Route path="/emergencies">
-            <Emergencies user={user} />
+            <Emergencies toggle={toggleFetch} setToggle={setToggleFetch} user={user} />
           </Route>
           <Route path="/profile">
             <Profile user={user} />
