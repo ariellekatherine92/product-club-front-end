@@ -1,127 +1,102 @@
-.main-safe .safe-header {
-    text-align: center;
-    font-family: Futura-Bold;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 48px;
-    margin-bottom: 75px;
-}
-
 .main-safe {
+    padding: 80px;
+}
+
+.main-safe h2 {
+    color: #000;
+    font-weight: 700;
+    font-family: 'Roboto', sans-serif;
+    font-size: 45px;
+    text-align: center;
+}
+
+.main-safe .safe-row {
     display: flex;
+    justify-content: space-around;
+    margin-top: 60px;
+    margin-bottom: 60px;
 }
 
-.main-safe .image-1 {
-    background-image: url("../images/gary.png");
-    position: static;
-    width: 250px;
-    height: 250px;
-    left: 0px;
-    top: 0px;
-    border-radius: 30px;
-    margin-top: 180px;
-    margin-left: 100px;
+.main-safe .safe-row .item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.main-safe .image-2 {
-    background-image: url("../images/mary.png");
-    position: static;
-    width: 250px;
-    height: 250px;
-    left: 0px;
-    top: 0px;
-    border-radius: 30px;
-    margin-top: 180px;
-    margin-left: 100px;
+.main-safe .safe-row .item  h5 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 28px;
+    margin: 20px auto;
+    font-weight: 400;
 }
 
-.main-safe .winter-storm {
-    background-image: url("../images/snowstorm.png");
-    position: static;
-    width: 250px;
-    height: 250px;
-    left: 0px;
-    top: 0px;
-    border-radius: 30px;
-    margin-top: 180px;
-    margin-left: 100px;
+.safe-row .item .image-wrapper {
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 292px;
+    height: 292px;
+    border-radius: 50px;
+    overflow: hidden;
 }
 
-.main-safe .lonely-man {
-    background-image: url("../images/lonelyman.png");
-    position: static;
-    width: 250px;
-    height: 250px;
-    left: 0px;
-    top: 0px;
-    border-radius: 30px;
-    margin-top: 180px;
-    margin-left: 100px;
+.safe-row .item .image-wrapper.owen,
+.safe-row .item .image-wrapper.mary {
+    width: 345px;
+    height: 342px;
+    border-radius: 0;
 }
 
-.main-safe .prepared {
-    background-image: url("../images/prepared.png");
-    position: static;
-    width: 250px;
-    height: 250px;
-    left: 0px;
-    top: 0px;
-    border-radius: 30px;
-    margin-top: 180px;
-    margin-left: 100px;
+.safe-row .item .image-wrapper.owen {
+    background-image: url('../images/gary.png');
 }
 
-.main-safe .supplies {
-    background-image: url("../images/supplies.png");
-    position: static;
-    width: 250px;
-    height: 250px;
-    left: 0px;
-    top: 0px;
-    border-radius: 30px;
-    margin-top: 180px;
-    margin-left: 100px;
+.safe-row .item .image-wrapper.mary {
+    background-image: url('../images/mary.png');
 }
 
-.main-safe .flashlight {
-    background-image: url("../images/flashlight.png");
-    position: static;
-    width: 250px;
-    height: 250px;
-    left: 0px;
-    top: 0px;
-    border-radius: 30px;
-    margin-top: 180px;
-    margin-left: 100px;
+.safe-row .item .image-wrapper.winter-storm {
+    width: 594px;
+    height: 500px;
+    background-size: contain;
+    margin-right: -83px;
+    background-image: url('../images/winter-storm.png');
 }
 
-.main-safe .broken-phone {
-    background-image: url("../images/broken-phone.png");
-    position: static;
-    width: 250px;
-    height: 250px;
-    left: 0px;
-    top: 0px;
-    border-radius: 30px;
-    margin-top: 180px;
-    margin-left: 100px;
+.safe-row .item .image-wrapper.lonely-man {
+    background-image: url('../images/lonelyman.png');
 }
 
-.main-safe .door {
-    background-image: url("../images/door.png");
-    position: static;
-    width: 250px;
-    height: 250px;
-    left: 0px;
-    top: 0px;
-    border-radius: 30px;
-    margin-top: 180px;
-    margin-left: 100px;
+.safe-row .item .image-wrapper.prepared {
+    background-image: url('../images/prepared.png');
 }
 
+.safe-row .item .image-wrapper.supplies {
+    background-image: url('../images/supplies.png');
+}
 
+.safe-row .item .image-wrapper.flashlight {
+    background-image: url('../images/flashlight.png');
+}
 
+.safe-row .item .image-wrapper.broken-phone {
+    background-image: url('../images/broken-phone.png');
+}
 
+.safe-row .item .image-wrapper.door {
+    background-image: url('../images/door.png');
+}
 
+.btn-wrapper {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+}
 
-
+.btn-wrapper button {
+    background: #1a1a1a;
+    padding: 8px 20px;
+    border-radius: 4px;
+    color: #fff;
+    border: none;
+    outline: none;
+}
