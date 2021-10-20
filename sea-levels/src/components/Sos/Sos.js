@@ -19,8 +19,8 @@ const Sos = (props) => {
   const deleteAlert = async () => {
     try {
       const db = app.firestore()
-      const removeFields = await db.collection('emergencies').doc(props.user).update({})
-      const removeDocs = await db.collection('emergencies').doc(props.user).delete()
+      await db.collection('emergencies').doc(props.user).update({})
+      await db.collection('emergencies').doc(props.user).delete()
   } catch (error) {
     console.log(error)
     }
@@ -34,7 +34,7 @@ const Sos = (props) => {
       setAlert(oneEmergence)
     }
     getOneEmergence()
-  },[deleteAlert]);
+  },[props.user]);
 
 
   const handleChange = (e) => {
@@ -49,7 +49,7 @@ const Sos = (props) => {
     e.preventDefault();
     try{
       const db = app.firestore()
-      const data = await db.collection('emergencies').doc(props.user).set({...form})
+      await db.collection('emergencies').doc(props.user).set({...form})
 
     } catch(error) {
       throw Error
