@@ -1,17 +1,18 @@
 import { useState } from "react";
+import { useHistory } from "react-router-dom"
 import app from "../../services/firebase";
 import './Sos.css'
 
-const dateFormate = new Date();
-const Sos = (props,{user}) => {
+const Sos = (props) => {
   const [form, setForm] = useState({
     name: "",
     location: "",
     needs: [],
     type: "",
-    dateTime: new Date(),
+    dateTime: new Date().toLocaleString(),
     active: false,
   });
+  const history = useHistory()
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,7 +22,6 @@ const Sos = (props,{user}) => {
     });
   };
 
-  // console.log('SOS',props.user)
   const handleSubmit = async (e) => {
     e.preventDefault();
     try{
@@ -31,7 +31,7 @@ const Sos = (props,{user}) => {
     } catch(error) {
       throw Error
     }
-
+    history.push('/emergencies')
   };
 
   return (

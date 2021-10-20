@@ -14,6 +14,9 @@ export default function Navbar(props) {
           <Link to="/">Home</Link>
         </li>
         <li>
+          <Link to="/emergencies">Emergencies</Link>
+        </li>
+        <li>
           <Link to="/dashboard">Dashboard</Link>
         </li>
         <li>
