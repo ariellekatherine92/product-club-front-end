@@ -3,7 +3,7 @@ import React from 'react'
 export default function About() {
     return (
         <div className="mission-statement">
-            <h1>Our Mission</h1>
+            <h1>What we do</h1>
 
             <div className="description-container">
                 <div className="description-item">
