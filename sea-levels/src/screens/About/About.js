@@ -4,21 +4,26 @@ export default function About() {
     return (
         <div className="mission-statement">
             <h1>Our Mission</h1>
+
             <div className="description-container">
-                <div className="our-mission">
-                    <div className="image-wrapper"></div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            
+                <div className="description-item">
+                    <div className="image-wrapper display" />
+                    <p>To display accurate, easy-to-digest weather forecasts across the country.</p>
                 </div>
-                <div className="our-mission">
-                    <div className="image-wrapper"></div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            
+
+                <div className="description-item">
+                    <div className="image-wrapper anticipate" />
+                    <p>To anticipate disastrous weather events and give adequate preparation time.</p>
                 </div>
-                <div className="our-mission">
-                    <div className="image-wrapper"></div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+                <div className="description-item">
+                    <div className="image-wrapper provide" />
+                    <p>To provide a resource for community-based coordination, especially during times of crisis.</p>
                 </div>
+            </div>
+
+            <div className="btn-wrapper">
+                <button>Learn More</button> 
             </div>
         </div>
         

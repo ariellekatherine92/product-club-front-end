@@ -147,34 +147,71 @@ nav.page-nav > ul > li > a > .sos-btn {
 
 .mission-statement h1 {
     text-align: center;
-    font-family: Futura-Bold;
+    font-family: 'Roboto', sans-serif;
     font-style: normal;
-    font-weight: bold;
-    font-size: 48px;
-    margin-bottom: 75px;
+    font-weight: 700;
+    font-size: 45px;
+    margin-top: 90px;
+    margin-bottom: 30px;
+    color: #fff;
 }
 
 .mission-statement .description-container {
     display: flex;
-
+    width: 900px;
+    margin: 0 auto;
 }
 
-.mission-statement .description-container .our-mission {
-    
+.mission-statement .description-container .description-item {
+    width: 280px;
+    margin: 0 10px;
+    flex-shrink: 0;
 }
 
-.mission-statement .description-container .our-mission .image-wrapper {
-    position: static;
-    width: 250px;
-    height: 250px;
-    left: 0px;
-    top: 0px;
-    background: #C4C4C4;
+.mission-statement .description-container .description-item .image-wrapper {
+    width: 280px;
+    height: 280px;
+    background: #1a1a1a;
     border-radius: 30px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
 }
 
-.mission-statement .description-container .our-mission p {
+.mission-statement .description-container .description-item .image-wrapper.display {
+    background-image: url('../images/brokenphone.png');
+}
 
+.mission-statement .description-container .description-item .image-wrapper.anticipate {
+    background-image: url('../images/nofood.png');
+}
+
+.mission-statement .description-container .description-item .image-wrapper.provide {
+    background-image: url('../images/flood.png');
+}
+
+.mission-statement .description-container .description-item p {
+    color: #fff;
+    font-size: 23px;
+    font-family: 'Roboto', sans-serif;
+    line-height: 28px;
+    margin-top: 10px;
+    padding: 20px;
+}
+
+.mission-statement .btn-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+}
+
+.mission-statement .btn-wrapper button {
+    background: #1a1a1a;
+    color: #fff;
+    outline: none;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 4px;
 }
 
 .signup-wrapper {
