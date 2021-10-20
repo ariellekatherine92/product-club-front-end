@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function About_US() {
+export default function About_Us() {
     return (
         <div className="about-us-main">
             <h1 className="about-heading">About us</h1>
