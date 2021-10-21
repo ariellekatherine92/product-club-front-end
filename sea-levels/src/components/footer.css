@@ -1,25 +1,55 @@
 .footer-main {
     background-color: #202020;
-    font-family: Roboto;
+    font-family: 'Roboto', sans-serif;
+    color: #FFFFFF;
+    padding: 0 5%;
+}
+
+.footer-main  .column-wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 4rem 0;
+}
+
+.footer-main h1 {
+    font-weight: bold;
+    font-size: 45px;
+}
+
+.footer-main .contact-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-main .h3  {
+    font-size: 19px;
+    font-weight: bold;
+}
+
+.footer-main .link-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer-main .link-list li a {
+    color: #FFFFFF;
+    font-size: 19px;
+    text-decoration: none;
+}
+
+.footer-main .email-form input {
+    border-radius: 1rem;
+}
+
+.footer-main .subscribe-btn {
+    border-radius: 1rem;
+    margin: 10px;
+    background: #624F6D;
     color: #FFFFFF;
 }
 
-.footer-main .title-heading {
-    position: absolute;
-    font-weight: bold;
-    font-size: 45px;
-    display: flex;
-    align-items: center;
-}
-
-.footer-main .about-links {
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 45px;
-    line-height: 120%;  
-    display: flex;
-    align-items: center;
+.footer-main .copyright-div {
+    border-top: 2px solid #FFFFFF;
     text-align: center;
-
+    padding: 36px;
 }

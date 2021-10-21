@@ -1,5 +1,6 @@
 import React from 'react';
 import './safe.css';
+import { Link } from 'react-router-dom';
 
 export default function Safe() {
     return (
@@ -64,7 +65,9 @@ export default function Safe() {
             <h2>You can be like Madeline too.</h2>
             
             <div className="btn-wrapper">
+                <Link to="/signup">
                 <button>Join Weather Together</button>
+                </Link>
             </div>
         </div>
     );
