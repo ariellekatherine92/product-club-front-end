@@ -1,0 +1,34 @@
+.landing-page.about-us {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.landing-page.about-us .content {
+    display: block;
+}
+
+.landing-page.about-us .content .wrapper {
+    padding-top: 6rem;
+    width: 60%;
+}
+
+.landing-page.about-us h1 {
+    font-size: 75px;
+    color: #000000;
+    margin-bottom: 8%;
+}
+
+.landing-page.about-us h2 {
+    margin-bottom: 8%;
+
+}
+
+.landing-page.about-us h3 {
+    font-size: 28px;
+    width: auto;
+}
+
+.landing-page.about-us p {
+    margin-bottom: 8%;
+}
