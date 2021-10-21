@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export default function About() {
     return (
@@ -23,7 +24,9 @@ export default function About() {
             </div>
 
             <div className="btn-wrapper">
+            <Link to="/about-us">
                 <button>Learn More</button> 
+            </Link>
             </div>
         </div>
         
