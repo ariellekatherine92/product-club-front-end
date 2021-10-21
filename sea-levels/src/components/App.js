@@ -23,6 +23,7 @@ import Blog from "./Blog";
 import Contact from "./Contact";
 import About_Main from "./About_Main";
 import FAQ from "./FAQ";
+import SignOut from '../screens/SignOut/SignOut'
 
 
 function App() {
@@ -37,9 +38,10 @@ function App() {
   auth.onAuthStateChanged((user) => {
     if (user) {
       setUser(user.uid);
+    } else {
+      setUser(null)
     }
   });
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -78,6 +80,7 @@ function App() {
           <PrivateRoute path="/update-profile" component={UpdateProfile} />
           <Route path="/signup" component={Signup} />
           <Route path="/login" component={Login} />
+          <Route path='/signout' component={SignOut}/>
           <Route path="/forgot-password" component={ForgotPassword} />
           <Route path="/map" component={Map} />
           <Route path="/about-us" component={About_Main} />
