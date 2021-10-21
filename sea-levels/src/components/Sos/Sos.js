@@ -34,7 +34,7 @@ const Sos = (props) => {
       setAlert(oneEmergence)
     }
     getOneEmergence()
-  },[props.user]);
+  },[]);
 
 
   const handleChange = (e) => {
@@ -54,7 +54,7 @@ const Sos = (props) => {
     } catch(error) {
       throw Error
     }
-    props.setToggle(!props.Toggle)
+    // props.setToggle(!props.Toggle)
     props.setIsOpen(!props.isOpen)
     history.push('/emergencies')
   };
