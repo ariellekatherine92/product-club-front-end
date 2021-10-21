@@ -22,6 +22,7 @@ import About_Us from "./About_Us";
 import Blog from "./Blog";
 import Contact from "./Contact";
 import About_Main from "./About_Main";
+import FAQ from "./FAQ";
 
 
 function App() {
@@ -82,6 +83,7 @@ function App() {
           <Route path="/about-us" component={About_Main} />
           <Route path="/blog" component={Blog} />
           <Route path="/contact" component={Contact} />
+          <Route path="/faq" component={FAQ} />
           <Route path="/emergencies">
             <Emergencies /*toggle={toggleFetch} setToggle={setToggleFetch}*/ user={user} />
           </Route>
