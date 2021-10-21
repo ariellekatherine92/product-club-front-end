@@ -67,7 +67,7 @@ function App() {
   return (
     <Router>
       <AuthProvider>
-        <Navbar setIsOpen={setIsOpen} isOpen={isOpen} />
+        <Navbar setIsOpen={setIsOpen} isOpen={isOpen} user={user}/>
         {isOpen ? (
           <Sos user={user} setIsOpen={setIsOpen} isOpen={isOpen} /*toggle={toggleFetch} setToggle={setToggleFetch}*//>
         ) : (
