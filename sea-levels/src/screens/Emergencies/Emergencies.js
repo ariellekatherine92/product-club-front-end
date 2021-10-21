@@ -13,7 +13,7 @@ const Emergencies = (props) => {
         .then((querySnapshot) => {
           const data = querySnapshot.docs.map((doc) => doc.data());
           setAlerts(data);
-          props.setToggle(!props.toggle)
+          // props.setToggle(!props.toggle)
         });
     };
     fetchAlerts();
