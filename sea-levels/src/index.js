@@ -4,13 +4,11 @@ import { datadogLogs } from "@datadog/browser-logs";
 import App from "./components/App";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { createStore } from "redux";
-import allReducers from "./reducers";
+import rootReducers from "./reducers/rootReducers";
+import { PersistGate } from "redux-persist/lib/integration/react";
 import { Provider } from "react-redux";
+import { persistor, store } from "./services/store";
 
-const store = createStore(
-  allReducers,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
 
 datadogLogs.init({
   clientToken: "pub42e3c3c6475bcab9c69fb502a121ae1b",
@@ -22,7 +20,9 @@ datadogLogs.init({
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <PersistGate persistor={persistor}>
+        <App />
+      </PersistGate>
     </Provider>
   </React.StrictMode>,
   document.getElementById("root")
