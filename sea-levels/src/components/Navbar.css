@@ -1,3 +1,23 @@
-.link {
-  margin-right: 25px;
+.auth-links {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 170px;
+  color:black;
+}
+
+.auth-links:visited {
+  color: black;
+}
+
+.unauth-links{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 120px;
+  color:black;
+}
+
+.unauth-links{
+  color: black;
 }
