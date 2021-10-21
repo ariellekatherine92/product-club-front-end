@@ -1,18 +1,20 @@
 import React from "react";
 import "weather-icons/css/weather-icons.css";
 import { useSelector } from "react-redux";
+import coolicon from '../images/coolicon.png'
+import './WeatherWidget.css'
 
-const WeatherWidget = ({weather, town}) => {
+const WeatherWidget = ({weather}) => {
   const location = useSelector((state) => state.location)
-  console.log('WEATHER',weather);
+  // console.log(location)
   return (
-    <div className="container text-dark">
-      <h1>Weather Widget</h1>
-      <h2>City: {location}</h2>
-      <img src={weather.properties?.periods[0].icon} alt="" />
-      <h2>Temp {weather.properties?.periods[0].temperature}</h2>
-      <h2>Wind Speeds {weather.properties?.periods[0].windSpeed} {weather.properties?.periods[0].windDirection}</h2>
-      <h2>{weather.properties?.periods[0].detailedForecast}</h2>
+    <div className="container">
+      <h1 className="weather-name">Mary S.</h1>
+      <img src={coolicon} alt="cool icon" />
+      <p>{weather.location?.name}, {weather.location?.region} {location}</p>
+      <p>{weather.current?.temp_f}</p>
+      <p>Feels like {weather.current?.feelslike_f}</p>
+      <p>uv {weather.current?.uv}</p>
     </div>
   );
 };

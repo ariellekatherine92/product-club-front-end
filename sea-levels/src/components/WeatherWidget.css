@@ -1,0 +1,10 @@
+.container {
+  display: grid;
+  border: 2px solid black;
+  padding: 4px;
+  
+}
+
+.weather-name {
+  font-weight: 700;
+}

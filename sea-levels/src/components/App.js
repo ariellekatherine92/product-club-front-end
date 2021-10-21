@@ -52,8 +52,8 @@ function App() {
 
         const responseOne = await axios.get(`https://api.weatherapi.com/v1/current.json?key=${process.env.REACT_APP_API_KEY}&q=${location}&aqi=no`
         );
-        console.log('key',process.env.REACT_APP_WEATHER_API_KEY)
         const weatherInfo = responseOne.data;
+        setWeather(weatherInfo)
         console.log(weatherInfo)
         
       } catch (error) {
