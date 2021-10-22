@@ -3,8 +3,8 @@ import { useHistory } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext"
 
 const SignOut = () => {
-  const [error, setError] = useState("");
-  const { currentUser, logout } = useAuth();
+  const [setError] = useState("");
+  const { logout } = useAuth();
   const history = useHistory();
 
   useEffect(() => {
