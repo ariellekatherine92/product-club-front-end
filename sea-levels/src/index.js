@@ -3,8 +3,6 @@ import ReactDOM from "react-dom";
 import { datadogLogs } from "@datadog/browser-logs";
 import App from "./components/App";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { createStore } from "redux";
-import rootReducers from "./reducers/rootReducers";
 import { PersistGate } from "redux-persist/lib/integration/react";
 import { Provider } from "react-redux";
 import { persistor, store } from "./services/store";
