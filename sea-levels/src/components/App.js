@@ -18,7 +18,7 @@ import { useSelector } from "react-redux";
 import Sos from "./Sos/Sos";
 import Main from "../screens/Main";
 import Emergencies from "../screens/Emergencies/Emergencies";
-import About_Us from "./About_Us";
+import AboutUs from "./About_Us";
 import Blog from "./Blog";
 import Contact from "./Contact";
 import About_Main from "./About_Main";
