@@ -11,7 +11,8 @@ const Sos = (props) => {
     needs: [],
     type: "",
     dateTime: new Date().toLocaleString(),
-    active: false,
+    email: '',
+    
   });
   
   const history = useHistory();
@@ -91,19 +92,17 @@ const Sos = (props) => {
           value={form.type}
           onChange={handleChange}
         />
-        <label htmlFor="active"> Active</label>
         <input
-          type="radio"
-          placeholder="Active"
-          name="active"
-          id="active"
-          checked={form.active}
+          type="email"
+          placeholder="Email"
+          name="email"
+          checked={form.email}
           onChange={handleChange}
         />
         <button type="submit">Submit</button>
       <button className='close-icon' onClick={() => props.setIsOpen(!props.isOpen)}>X</button>
       {props.content}
-      {alert ? <div>{alert?.name} {alert?.location} {alert?.needs} {alert?.type} <button onClick={deleteAlert}>X</button></div>:''}
+      {alert ? <div>{alert?.name} {alert?.location} {alert?.needs} {alert?.type} {alert?.email} <button onClick={deleteAlert}>X</button></div>:''}
       
       </form>
     </div>

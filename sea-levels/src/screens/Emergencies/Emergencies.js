@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
+import ButtonMailto from "../../components/ButtonMailto";
 import app from "../../services/firebase";
+
 
 const Emergencies = (props) => {
   const [alerts, setAlerts] = useState([]);
@@ -26,7 +28,8 @@ const Emergencies = (props) => {
         {alerts.map((alert) => (
           <ol>
             {alert.name} {alert.location} {alert.type} {alert.needs}{" "}
-            {alert.dateTime.toLocaleString()} {alert.active}
+            {alert.dateTime.toLocaleString()} {alert.active} 
+            <ButtonMailto label='E-Mail' mailto={'mailto:'+ alert.email}/>
           </ol>
         ))}
       </ul>
