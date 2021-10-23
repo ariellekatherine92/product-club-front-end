@@ -52,7 +52,7 @@ export default function Footer() {
                 </div>
             </div>
             <div className="copyright-div">
-                <span>Copyright © 2021 · All Rights Reserved · Waterproof, LLC</span>
+                <span>Copyright © 2021 · All Rights Reserved · Weather Together, LLC</span>
             </div>
         </div>
     )
