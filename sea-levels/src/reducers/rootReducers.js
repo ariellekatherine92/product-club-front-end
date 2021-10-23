@@ -6,7 +6,7 @@ import { persistReducer } from 'redux-persist';
 const rootPersistConfig = {
   key: 'root',
   storage,
-  whitelist: ['location']
+  whitelist: ["location"]
 };
 
 

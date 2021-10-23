@@ -1,0 +1,9 @@
+.dashboard-page {
+    display: flex;
+    margin-top: 150px; 
+    padding: 0 4rem;
+}
+
+.dashboard-page > section {
+    flex-grow: 1;
+}
