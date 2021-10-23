@@ -20,7 +20,6 @@
     "redux": "^4.1.1",
     "redux-persist": "^6.0.0",
     "vercel": "^23.1.2",
-    "weather-icons": "git+https://github.com/erikflowers/weather-icons.git",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
