@@ -1,0 +1,89 @@
+.login-page {
+    min-height: 100vh;
+    display: flex;
+    justify-content: stretch;
+}
+
+.login-page .bg {
+    background-image: url('../../images/bg-login.png');
+    height: 100vh;
+    width: 50%;
+    background-size: cover;
+}
+
+.login-page .form-content {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-page .form-content .wrapper {
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+}
+
+.login-page h5 {
+    color: #2D3748;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.login-page h2 {
+    font-size: 30px;
+    color: #1A202C;
+    font-weight: bold;
+    margin-bottom: 22px;
+}
+
+.login-page .form-group {
+    margin-bottom: 8px;
+}
+
+.login-page .form-label {
+    color: #4A5568;
+    font-size: 16px;
+}
+
+.login-page form .form-options {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 0;
+    color: #2D3748;
+    font-size: 14px;
+    align-items: center;
+}
+
+.login-page form .form-options label {
+    margin: 0;
+    padding-left: 8px;
+}
+
+.login-page form .form-options:first-child {
+    flex-grow: 1;
+}
+
+.login-page form button[type=submit] {
+    background: #4D2D52;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    margin-top: 1rem;
+}
+
+.login-page .join {
+    padding-top: 12rem;
+    color: #616161;
+    font-size: 16px;
+    text-align: center;
+}
+
+.login-page .join > a {
+    text-decoration: none;
+}
