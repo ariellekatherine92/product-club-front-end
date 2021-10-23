@@ -36,7 +36,7 @@ const New = (props) => {
           type="search"
           name="keyword"
           id="keyword"
-          placeholder="Search Keywords"
+          placeholder="Enter City"
           value={search}
           onChange={handleChange}
         />
