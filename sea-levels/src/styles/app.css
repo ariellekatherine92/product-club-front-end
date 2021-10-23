@@ -96,49 +96,6 @@ body {
     background: #000000;
 }
 
-nav.page-nav {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 50px;
-    z-index: 100;
-    display: flex;
-    justify-content: flex-end;
-    background: linear-gradient(180deg, rgba(245, 245, 245, 0.6) 9.9%, rgba(0, 0, 0, 0) 9.91%),
-}
-
-nav.page-nav > ul {
-    list-style-type: none;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin: 0;
-}
-
-nav.page-nav > ul > li {
-    padding: 1rem;
-}
-
-nav.page-nav.unauth-links.auth-links > ul > li > a {
-    color: #000;
-    text-decoration: none;
-}
-
-nav.page-nav > ul > li > a > .signup-btn {
-    color: #fff;
-    background: blue;
-    padding: 6px;
-    border-radius: 3px;
-}
-
-nav.page-nav > ul > li > a > .sos-btn {
-    color: #fff;
-    background:#FF0000;
-    padding: 6px;
-    border-radius: 3px;
-}
-
 .mission-statement {
     background: #8C90B7;
     padding: 5%;

@@ -1,0 +1,52 @@
+nav.page-nav {
+    position: absolute;
+    top: 25px;
+    left: 0;
+    right: 50px;
+    height: 50px;
+    z-index: 100;
+    display: flex;
+    justify-content: flex-end;
+    background: linear-gradient(180deg, rgba(245, 245, 245, 0.6) 9.9%, rgba(0, 0, 0, 0) 9.91%),
+}
+
+nav.page-nav button {
+    border-radius: 8px;
+    padding: 8px 16px;
+    color: #fff;
+    border: none;
+    outline: none;
+}
+
+nav.page-nav button.sos-btn {
+    background: #F04141;
+}
+
+nav.page-nav button.signup-btn {
+    background: #333;
+}
+
+
+nav.page-nav > ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0;
+}
+
+nav.page-nav > ul > li {
+    padding: 1rem;
+}
+
+nav.page-nav > ul > li > a {
+    color: #000;
+    text-decoration: none;
+}
+
+nav.page-nav > ul > li > a > .sos-btn {
+    color: #fff;
+    background:#FF0000;
+    padding: 6px;
+    border-radius: 3px;
+}
