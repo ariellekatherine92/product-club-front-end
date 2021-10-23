@@ -1,8 +1,10 @@
 import { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import app from '../../services/firebase'
 
 
 const Profile = ({user}) => {
+  const history = useHistory();
   const [form, setForm] = useState({
     firstName:'',
     lastName:'',
@@ -25,6 +27,8 @@ const Profile = ({user}) => {
     event.preventDefault()
     const db = app.firestore()
     await db.collection('users').doc(user.uid).set({...form})
+
+    history.push('/')
   }
 
   return (

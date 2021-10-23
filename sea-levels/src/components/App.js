@@ -31,7 +31,6 @@ function App() {
   const [user, setUser] = useState("");
   const [town, setTown] = useState("");
   const [isOpen, setIsOpen] = useState(false);
-  // const [toggleFetch, setToggleFetch] = useState(false);
   const location = useSelector((state) => state.location);
 
  //Gets user objects
@@ -45,13 +44,13 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // const db = app.firestore();
-        // const doc = await db.collection(`users`).doc(user).get();
-        // const userInfo = doc.data();
-        // const town = userInfo.town;
-        // setTown(town);
+        const db = app.firestore();
+        const doc = await db.collection(`users`).doc(user).get();
+        const userInfo = doc.data();
+        const town = userInfo.town;
+        setTown(town);
 
-        // console.log("Town", town);
+        console.log("Town", town);
 
         const responseOne = await axios.get(`https://api.weatherapi.com/v1/current.json?key=${process.env.REACT_APP_API_KEY}&q=${location}&aqi=no`
         );
