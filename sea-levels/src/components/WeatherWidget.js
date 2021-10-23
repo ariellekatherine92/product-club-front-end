@@ -5,7 +5,6 @@ import location from '../images/ic-location.png';
 import users from '../images/ic-users.png';
 import home from '../images/ic-home.png';
 import uv from '../images/ic-uv.png';
-import 'weather-icons/css/weather-icons.css';
 import './WeatherWidget.css';
 
 const WeatherWidget = ({ username, weather, ...props  }) => {
