@@ -43,12 +43,14 @@ const New = (props) => {
         <button type="submit">Submit</button>
       </form>
       {news.map((feed) => (
+        <a href={feed.url} target='_blank'>
         <div>
           {feed.author}
-          {feed.publishedAt}
+          {feed.publishedAt.split('', 10)}
           {feed.title}
           <img src={feed.urlToImage} alt={feed.title} />
         </div>
+        </a>
       ))}
     </div>
   );
