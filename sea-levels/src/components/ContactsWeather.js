@@ -6,20 +6,14 @@ import sunny from '../images/ic-sunny.png';
 import tornado from '../images/ic-tornado.png';
 import fire from '../images/ic-fire.png';
 import heat from '../images/ic-heat.png';
+import { ALERTS } from './WeatherAlertLegend';
 import './ContactsWeather.css';
-
-const ALERTS = {
-    NORMAL: 'Normal',
-    WATCH: 'WATCH',
-    WARNING: 'WARNING',
-    ADVISORY: 'ADVISORY',
-};
 
 const CONTACTS = [{
     name: 'Joe V.',
     location: 'Dallas, TX',
     weather: {
-        alert: ALERTS.NORMAL,
+        alert: ALERTS.NORMAL.type,
         icon: sunny,
         temp: 24,
     },
@@ -27,7 +21,7 @@ const CONTACTS = [{
     name: 'Joe V.',
     location: 'Dallas, TX',
     weather: {
-        alert: ALERTS.WATCH,
+        alert: ALERTS.WATCH.type,
         icon: tornado,
         temp: 24,
     },
@@ -35,7 +29,7 @@ const CONTACTS = [{
     name: 'Joe V.',
     location: 'Dallas, TX',
     weather: {
-        alert: ALERTS.WARNING,
+        alert: ALERTS.WARNING.type,
         icon: fire,
         temp: 24,
     },
@@ -43,7 +37,7 @@ const CONTACTS = [{
     name: 'Joe V.',
     location: 'Dallas, TX',
     weather: {
-        alert: ALERTS.ADVISORY,
+        alert: ALERTS.ADVISORY.type,
         icon: heat,
         temp: 24,
     },
@@ -76,7 +70,7 @@ const ContactsWeather = () => {
                     </div>
 
                     <div className="weather-info">
-                        <div className={`alert-status ${weather.alert.toLowerCase()}`} />
+                        <div className={`alert-status ${weather.alert}`} />
 
                         <div className="icon-wrapper">
                             <img src={weather.icon} />

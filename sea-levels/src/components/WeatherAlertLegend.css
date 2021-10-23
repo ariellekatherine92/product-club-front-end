@@ -1,0 +1,44 @@
+.weather-alert-legend {
+    margin-top: 4rem;
+    border: 1px solid rgba(0, 0, 0, 0.6);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    padding: .8rem 1.2rem;
+    font-size: 18px;
+    max-width: 550px;
+}
+
+.weather-alert-legend h3 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.weather-alert-legend table {
+    margin-top: 1rem;
+}
+
+.weather-alert-legend table td {
+    padding: 12px;
+}
+
+.weather-alert-legend .alert-status {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+}
+
+.alert-status.normal {
+    background: #B7FF95;
+}
+
+.alert-status.watch {
+    background: #FFE924;
+}
+
+.alert-status.warning {
+    background: #FF9A62;
+}
+
+.alert-status.advisory {
+    background: #F04141;
+}

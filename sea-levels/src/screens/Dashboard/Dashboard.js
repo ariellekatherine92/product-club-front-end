@@ -4,6 +4,7 @@ import 'firebase/compat/auth';
 import WeatherWidget from '../../components/WeatherWidget';
 import ContactsWeather from '../../components/ContactsWeather';
 import News from '../../components/News/New';
+import WeatherAlertLegend from '../../components/WeatherAlertLegend';
 import './Dashboard.css';
 
 export default function Dashboard(props) {
@@ -27,6 +28,7 @@ export default function Dashboard(props) {
       </section>
       <article>
         <News town={props.town} />
+        <WeatherAlertLegend />
       </article>
     </div>
   );

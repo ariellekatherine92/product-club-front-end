@@ -43,22 +43,6 @@
     border-radius: 50%;
 }
 
-.weather-info .alert-status.normal {
-    background: #B7FF95;
-}
-
-.weather-info .alert-status.watch {
-    background: #FFE924;
-}
-
-.weather-info .alert-status.warning {
-    background: #FF9A62;
-}
-
-.weather-info .alert-status.advisory {
-    background: #F04141;
-}
-
 .weather-info .icon-wrapper {
     width: 100px;
     text-align: center;
