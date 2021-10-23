@@ -5,8 +5,8 @@
   display: flex;
   padding: 1rem 2rem;
   font-size: 24px;
-  max-width: 800px;
   justify-content: space-between;
+  background: #F9F9F9;
 }
 
 .weather-widget h5 {
@@ -17,6 +17,7 @@
 .weather-widget .user-details {
   display: flex;
   flex-direction: column;
+  margin-right: 2rem;
 }
 
 .weather-widget .user-details > span {
@@ -77,4 +78,15 @@
 }
 .weather-widget .weather-details .uv > img {
   margin-right: 12px;
+}
+
+.weather-widget .weather-details button {
+  background: #7B61FF;
+  color: #fff;
+  font-size: 24px;
+  border: none;
+  outline: none;
+  border-radius: 15px;
+  padding: 0.5rem 2rem;
+  margin-top: 1rem;
 }

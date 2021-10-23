@@ -54,6 +54,8 @@ const WeatherWidget = ({ username, weather, ...props  }) => {
           <img src={uv} />
           <span>{`${weather.current?.uv * 100}%`}</span>
         </div>
+
+        <button>View Full Forecast</button>
       </div>
     </div>
   );
