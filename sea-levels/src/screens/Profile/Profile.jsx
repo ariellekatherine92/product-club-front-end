@@ -26,7 +26,7 @@ const Profile = ({user}) => {
   const handleSubmit = async (event) => {
     event.preventDefault()
     const db = app.firestore()
-    await db.collection('users').doc(user.uid).set({...form})
+    await db.collection('users').doc(user).set({...form})
 
     history.push('/')
   }

@@ -23,54 +23,70 @@ import Blog from "./Blog";
 import Contact from "./Contact";
 import About_Main from "./About_Main";
 import FAQ from "./FAQ";
-import SignOut from '../screens/SignOut/SignOut'
-
+import SignOut from "../screens/SignOut/SignOut";
 
 function App() {
   const [weather, setWeather] = useState([]);
   const [user, setUser] = useState("");
-  const [town, setTown] = useState("");
+  const [profile, setProfile] = useState({});
   const [isOpen, setIsOpen] = useState(false);
   const location = useSelector((state) => state.location);
 
- //Gets user objects
-  auth.onAuthStateChanged((user) => {
-    if (user) {
-      setUser(user.uid);
-    } else {
-      setUser(null)
-    }
-  });
+  //Gets user objects
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchUsersAuth = async () => {
+      auth.onAuthStateChanged((user) => {
+        if (user) {
+          setUser(user.uid);
+        } else {
+          setUser(null);
+        }
+      });
+    };
+    fetchUsersAuth();
+  }, []);
+console.log('%cUserUID',"color:blue; font-weight:bold;" ,user)
+  useEffect(() => {
+    const fetchUserData = async () => {
       try {
         const db = app.firestore();
         const doc = await db.collection(`users`).doc(user).get();
         const userInfo = doc.data();
-        const town = userInfo.town;
-        setTown(town);
+        setProfile(userInfo);
+        console.log("%cProfile", "color:red; font-weight:bold",profile);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchUserData();
+  }, [user]);
 
-        console.log("Town", town);
-
-        const responseOne = await axios.get(`https://api.weatherapi.com/v1/current.json?key=${process.env.REACT_APP_API_KEY}&q=${location}&aqi=no`
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const responseOne = await axios.get(
+          `https://api.weatherapi.com/v1/current.json?key=${process.env.REACT_APP_API_KEY}&q=${location}&aqi=no`
         );
         const weatherInfo = responseOne.data;
-        setWeather(weatherInfo)
-        console.log(weatherInfo)
-        
+        setWeather(weatherInfo);
+        console.log('%cWeatherInfo',"color:yellow; font-weight:bold",weatherInfo);
       } catch (error) {
         console.log(error);
       }
     };
     fetchData();
-  }, [location, user]);
+  }, [location]);
 
   return (
     <Router>
       <AuthProvider>
-        <Navbar setIsOpen={setIsOpen} isOpen={isOpen} user={user}/>
+        <Navbar setIsOpen={setIsOpen} isOpen={isOpen} user={user} />
         {isOpen ? (
-          <Sos user={user} setIsOpen={setIsOpen} isOpen={isOpen} /*toggle={toggleFetch} setToggle={setToggleFetch}*//>
+          <Sos
+            user={user}
+            setIsOpen={setIsOpen}
+            isOpen={isOpen} /*toggle={toggleFetch} setToggle={setToggleFetch}*/
+          />
         ) : (
           ""
         )}
@@ -79,7 +95,7 @@ function App() {
           <PrivateRoute path="/update-profile" component={UpdateProfile} />
           <Route path="/signup" component={SignUp} />
           <Route path="/login" component={Login} />
-          <Route path='/signout' component={SignOut}/>
+          <Route path="/signout" component={SignOut} />
           <Route path="/forgot-password" component={ForgotPassword} />
           <Route path="/map" component={Map} />
           <Route path="/about-us" component={About_Main} />
@@ -87,13 +103,15 @@ function App() {
           <Route path="/contact" component={Contact} />
           <Route path="/faq" component={FAQ} />
           <Route path="/emergencies">
-            <Emergencies /*toggle={toggleFetch} setToggle={setToggleFetch}*/ user={user} />
+            <Emergencies
+              /*toggle={toggleFetch} setToggle={setToggleFetch}*/ user={user}
+            />
           </Route>
           <Route path="/profile">
             <Profile user={user} />
           </Route>
           <Route path="/dashboard">
-            <Dashboard weather={weather} town={town} />
+            <Dashboard weather={weather} profile={profile} />
           </Route>
         </Switch>
       </AuthProvider>
