@@ -1,45 +1,47 @@
-import React, {useRef, useState} from 'react'
-import {Form, Button, Card, Alert} from 'react-bootstrap'
-import { useAuth } from '../../contexts/AuthContext'
-import { Link, useHistory } from 'react-router-dom'
+import React, { useRef, useState } from 'react';
+import { Form, Button, Card, Alert } from 'react-bootstrap';
+import { useAuth } from '../../contexts/AuthContext';
+import { Link, useHistory } from 'react-router-dom';
+import './SignUp.css';
 
 export default function Signup() {
-    const history = useHistory()
-    const emailRef = useRef()
-    const passwordRef = useRef()
-    const passwordConfirmRef = useRef()
-    const { signup } = useAuth()
-    const [error, setError] = useState('')
-    const [loading, setLoading] = useState(false)
+    const history = useHistory();
+    const emailRef = useRef();
+    const passwordRef = useRef();
+    const passwordConfirmRef = useRef();
+    const { signup } = useAuth();
+    const [error, setError] = useState('');
+    const [loading, setLoading] = useState(false);
 
     async function handleSubmit(e) {
-        e.preventDefault()
+        e.preventDefault();
 
-        if (passwordRef.current.value !==
-            passwordConfirmRef.current.value) {
-            return setError("Passwords do not match")
+        if (passwordRef.current.value !== passwordConfirmRef.current.value) {
+            return setError('Passwords do not match');
         }
 
         try {
-            setError('')
-            setLoading(true)
-            await signup(emailRef.current.value, passwordRef.current.value)
-            history.push('/')
+            setError('');
+            setLoading(true);
+            await signup(emailRef.current.value, passwordRef.current.value);
+            history.push('/');
         } catch {
-            setError('Failed to create an account')
+            setError('Failed to create an account');
         }
-        setLoading(false)
-        history.push(`/profile`)
+        setLoading(false);
+        history.push('/profile');
     }
 
     return (
-        <div>
-            <Card>
-                <Card.Body>
-                    <h2 className="text-center mb-4">Sign up</h2>
-                    {error && <Alert variant= "danger"> {error} </Alert>}
+        <div className="signup-page">
+            <div className="bg" />
+            <div className="form-content">
+                <div className="wrapper">
+                    <h5>Welcome to Umbrella</h5>
+                    <h2>Create an account</h2>
+
                     <Form onSubmit={handleSubmit}>
-                        <Form.Group id="email">
+                    <Form.Group id="email">
                             <Form.Label>Email</Form.Label>
                             <Form.Control type="email" ref={emailRef} required />
                         </Form.Group>
@@ -51,14 +53,20 @@ export default function Signup() {
                             <Form.Label>Password Confirmation</Form.Label>
                             <Form.Control type="password" ref={passwordConfirmRef} required />
                         </Form.Group>
-                        <Button disabled={loading} className="w-100" type="submit">Sign Up</Button>
+                        <div className="form-options">
+                            <div>
+                                <input type="radio" id="remember-me" />
+                                <label for="remember-me">Remember me</label>
+                            </div>
+                        </div>
+                        <Button disabled={loading} className="w-100" type="submit">SIGN UP</Button>
                     </Form>
-                </Card.Body>
-            </Card>
-            <div className="w-100 text-center mt-2"></div>
-            Already have an account? <Link to="/login"> Login</Link>
+
+                    <div className="login">
+                        <span>Already a member? <Link to= "/login">Log in</Link></span>
+                    </div>
+                </div>
+            </div>
         </div>
-    )
+    );
 }
-
-
