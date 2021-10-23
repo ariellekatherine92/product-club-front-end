@@ -3,7 +3,7 @@ import { auth } from "../services/firebase";
 import app from "../services/firebase";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import axios from "axios";
-import Signup from "../screens/SignUp/Signup";
+import SignUp from "../screens/SignUp/SignUp";
 import AuthProvider from "../contexts/AuthContext";
 import Dashboard from "../screens/Dashboard/Dashboard";
 import Login from "../screens/Login/Login";
@@ -77,7 +77,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={Main} />
           <PrivateRoute path="/update-profile" component={UpdateProfile} />
-          <Route path="/signup" component={Signup} />
+          <Route path="/signup" component={SignUp} />
           <Route path="/login" component={Login} />
           <Route path='/signout' component={SignOut}/>
           <Route path="/forgot-password" component={ForgotPassword} />
