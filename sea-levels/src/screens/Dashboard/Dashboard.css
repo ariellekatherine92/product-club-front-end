@@ -4,6 +4,17 @@
     padding: 0 4rem;
 }
 
+.dashboard-page h2 {
+    font-size: 54px;
+    margin: 2rem 0;
+}
+
 .dashboard-page > section {
+    display: flex;
+    flex-direction: column;
+    margin-right: 10rem;
+}
+
+.dashboard-page > article {
     flex-grow: 1;
 }

@@ -1,0 +1,94 @@
+.contacts-weather {
+    margin-top: 2rem;
+}
+
+.contacts-weather h3 {
+    font-size: 32px;
+    margin: 2rem 0;
+}
+
+.contacts-weather .contact-card {
+    border: 1px solid #4D4D4D;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    background: #F9F9F9;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 1.2rem;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.contacts-weather .contact-card .contact-info > span {
+    display: flex;
+    align-items: center;
+}
+
+.contacts-weather .contact-card .contact-info > span > * {
+    margin-right: 12px;
+}
+
+.contacts-weather .contact-card .contact-info .contact-name {
+    font-weight: bold;
+}
+
+.contacts-weather .contact-card .weather-info {
+    display: flex;
+    align-items: center;
+}
+
+.weather-info .alert-status {
+    height: 24px;
+    width: 24px;
+    border-radius: 50%;
+}
+
+.weather-info .alert-status.normal {
+    background: #B7FF95;
+}
+
+.weather-info .alert-status.watch {
+    background: #FFE924;
+}
+
+.weather-info .alert-status.warning {
+    background: #FF9A62;
+}
+
+.weather-info .alert-status.advisory {
+    background: #F04141;
+}
+
+.weather-info .icon-wrapper {
+    width: 100px;
+    text-align: center;
+}
+
+.weather-info .temperature {
+    font-size: 64px;
+    font-weight: bold;
+    position: relative;
+    padding-right: 18px;
+}
+
+.weather-info .temperature:after {
+    content: '°F';
+    position: absolute;
+    top: 12px;
+    right: 0;
+    font-size: 24px;
+    font-weight: normal;
+}
+
+.contacts-weather button.new-contact {
+    background: #E5E5E5;
+    border: 1px solid #4D4D4D;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    width: 100%;
+    padding: 46px;
+    color: #B0B0B0;
+    margin: 2rem 0;
+    font-size: 24px;
+    font-weight: 500;
+}
