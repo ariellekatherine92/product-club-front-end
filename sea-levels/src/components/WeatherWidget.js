@@ -13,7 +13,7 @@ const WeatherWidget = ({ username, weather, ...props  }) => {
   return (
     <div className="weather-widget">
       <div className="user-details">
-        <h5><img src={contact} /> {username}</h5>
+        <h5><img src={contact} /> {props.profile.firstName}</h5>
 
         <span>
           <div className="img-wrapper">
