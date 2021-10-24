@@ -6,7 +6,9 @@ import sunny from '../images/ic-sunny.png';
 import tornado from '../images/ic-tornado.png';
 import fire from '../images/ic-fire.png';
 import heat from '../images/ic-heat.png';
+import { useEffect, useState } from 'react';
 import { ALERTS } from './WeatherAlertLegend';
+import app from "../services/firebase"
 import './ContactsWeather.css';
 
 const CONTACTS = [{
@@ -43,10 +45,29 @@ const CONTACTS = [{
     },
 }];
 
-const ContactsWeather = () => {
+const ContactsWeather = (props) => {
+  const [list, setList] = useState([])
+  const toggleIsOpen = () => {
+    props.setIsOpen(!props.isOpen);
+};
+
+
+useEffect(() => {
+  const ref= app.firestore().collection('contacts');
+
+  ref.where('userID', '==', props.user).onSnapshot((querySnapshot) => {
+    const items = [];
+    querySnapshot.forEach((doc) => {
+      items.push(doc.data())
+    });
+    setList(items)
+    console.log(items)
+  })
+},[])
+
     return (
         <div className="contacts-weather">
-            <h3>Contacts</h3>
+            <h3>Contact</h3>
 
             {CONTACTS.map(({ name, weather, location: contactLocation }, idx) => (
                 <div key={`contact-card-${idx}`} className="contact-card">
@@ -83,7 +104,7 @@ const ContactsWeather = () => {
                 </div>
             ))}
 
-            <button className="new-contact">Add New Contact</button>
+            <button className="new-contact" onClick={toggleIsOpen}>Add New Contact</button>
         </div>
     )
 };

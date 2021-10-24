@@ -111,7 +111,8 @@ console.log('%cUserUID',"color:blue; font-weight:bold;" ,user)
             <Profile user={user} />
           </Route>
           <Route path="/dashboard">
-            <Dashboard weather={weather} profile={profile} />
+            <Dashboard weather={weather} profile={profile} user={user} setIsOpen={setIsOpen}
+            isOpen={isOpen}/>
           </Route>
         </Switch>
       </AuthProvider>
