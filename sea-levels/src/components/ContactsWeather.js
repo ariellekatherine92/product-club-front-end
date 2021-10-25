@@ -6,7 +6,10 @@ import sunny from '../images/ic-sunny.png';
 import tornado from '../images/ic-tornado.png';
 import fire from '../images/ic-fire.png';
 import heat from '../images/ic-heat.png';
+import { useEffect, useState } from 'react';
 import { ALERTS } from './WeatherAlertLegend';
+import app from "../services/firebase"
+import axios from 'axios';
 import './ContactsWeather.css';
 
 const CONTACTS = [{
@@ -43,19 +46,51 @@ const CONTACTS = [{
     },
 }];
 
-const ContactsWeather = () => {
+const ContactsWeather = (props) => {
+  const [lists, setLists] = useState([])
+  const toggleIsOpen = () => {
+    props.setIsOpen(!props.isOpen);
+};
+
+useEffect(() => {
+  const fetchContactsList = async () => {
+    const ref = await app.firestore().collection('contacts');
+    ref.where('userID', '==', props.user).onSnapshot((querySnapshot) => {
+      const items = [];
+      querySnapshot.forEach((doc) => {
+        items.push(doc.data())
+      });
+      setLists(items)
+      console.log(items)
+    })
+  };
+  fetchContactsList()
+},[props.user]);
+
+
+  // const getWeather = async (zipCode) =>{
+  //   const getCurrentWeather = await axios.get(
+  //     `https://api.weatherapi.com/v1/current.json?key=${process.env.REACT_APP_API_KEY}&q=${zipCode}&aqi=no`
+  //   );
+  //   const result = getCurrentWeather.data.current.temp_f
+  //   console.log(result)
+  //   return <span>{result}</span>
+  // }
+
+
+  
+
     return (
         <div className="contacts-weather">
-            <h3>Contacts</h3>
-
-            {CONTACTS.map(({ name, weather, location: contactLocation }, idx) => (
-                <div key={`contact-card-${idx}`} className="contact-card">
+            <h3>Contact</h3>
+            {lists.map((list) => (
+                <div /*key={`contact-card-${idx}`}*/ className="contact-card">
                     <div className="contact-info">
                         <span>
                             <div className="img-wrapper">
                                 <img src={contact} />
                             </div>
-                            <span className="contact-name">{name}</span>
+                            <span className="contact-name">{list.name}</span>
                             <div className="img-wrapper">
                                 <img src={heart} />
                             </div>
@@ -65,25 +100,29 @@ const ContactsWeather = () => {
                             <div className="img-wrapper">
                                 <img src={location} />
                             </div>
-                            <span>{contactLocation}</span>
+                            <span>{list.city},{list.state} {list.zipCode}</span>
                         </span>
                     </div>
 
-                    <div className="weather-info">
-                        <div className={`alert-status ${weather.alert}`} />
+                    {/* <div className="weather-info">
+                        <div className={`alert-status ${weather.alert}`} /> */}
 
-                        <div className="icon-wrapper">
+                        {/* <div className="icon-wrapper">
                             <img src={weather.icon} />
                         </div>
                         
                         <div className="temperature">
-                            <span>{weather.temp}</span>
-                        </div>
-                    </div>
+                            {getWeather(list.zipCode)};
+                        </div> */}
+                    {/* </div> */}
                 </div>
+              
             ))}
 
-            <button className="new-contact">Add New Contact</button>
+            {/* {CONTACTS.map(({ name, weather, location: contactLocation }, idx) => (
+            ))} */}
+
+            <button className="new-contact" onClick={toggleIsOpen}>Add New Contact</button>
         </div>
     )
 };

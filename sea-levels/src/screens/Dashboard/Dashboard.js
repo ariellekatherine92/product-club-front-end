@@ -1,11 +1,14 @@
+import { useState } from 'react';
 import WeatherWidget from '../../components/WeatherWidget';
 import ContactsWeather from '../../components/ContactsWeather';
 import News from '../../components/News/New';
 import WeatherAlertLegend from '../../components/WeatherAlertLegend';
+import NewContactPopup from '../../components/NewContactPopup/NewContactPopup';
 import './Dashboard.css';
 
 export default function Dashboard(props) {
- 
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <div className="dashboard-page">
       <section>
@@ -15,12 +18,21 @@ export default function Dashboard(props) {
           weather={props.weather}
           town={props.town}
         />
-        <ContactsWeather />
+        <ContactsWeather setIsOpen={setIsOpen} isOpen={isOpen} user={props.user}/>
       </section>
       <article>
         <News />
         <WeatherAlertLegend />
       </article>
+      {isOpen ? (
+          <NewContactPopup
+            user={props.user}
+            setIsOpen={setIsOpen}
+            isOpen={isOpen} 
+          />
+        ) : (
+          ""
+        )}
     </div>
   );
 }
