@@ -1,15 +1,34 @@
 import { useState, useEffect } from "react";
 import app from "../../services/firebase";
+import axios from 'axios'
 
 const NewContactPopup = (props) => {
-  const [contacts, setContacts] = useState({});
   const [contactForm, setContactForm] = useState({
     name: "",
     city: "",
     state: "",
     zipCode: "",
+    icon: '',
+    temp:'',
+    alert: '',
     userID: props.user,
   });
+
+
+    const getWeather = async () =>{
+    
+      const getCurrentWeather = await axios.get(
+        `https://api.weatherapi.com/v1/current.json?key=${process.env.REACT_APP_API_KEY}&q=${contactForm.zipCode}&aqi=no`
+      );
+      const temp = getCurrentWeather.data.current.temp_f;
+      const icon = getCurrentWeather.data.current.icon;
+      
+      contactForm.temp = temp
+      
+      
+    }
+    
+    console.log(contactForm.temp)
 
   const deleteContact = async () => {
     try {
@@ -32,13 +51,24 @@ const NewContactPopup = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      await getWeather(contactForm.zipCode)
       const db = app.firestore();
       await db.collection("contacts").add({ ...contactForm });
+      setContactForm({
+      name: "",
+      city: "",
+      state: "",
+      zipCode: "",
+      icon: '',
+      temp:'',
+      alert: '',
+      userID:'',
+      })
     } catch (error) {
       throw Error;
     }
     // props.setToggle(!props.Toggle)
-    // props.setIsOpen(!props.isOpen);
+    props.setIsOpen(!props.isOpen);
   };
   return (
     <div>
