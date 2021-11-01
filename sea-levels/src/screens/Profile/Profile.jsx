@@ -8,6 +8,7 @@ const Profile = ({user}) => {
   const [form, setForm] = useState({
     firstName:'',
     lastName:'',
+    occupants:'',
     streetNumber:'',
     streetName:'',
     town:'',
@@ -38,6 +39,8 @@ const Profile = ({user}) => {
         <input type="text" name='firstName' id='firstName' value={form.firstName.charAt(0).toUpperCase() + form.firstName.slice(1).toLocaleLowerCase()} onChange={handleChange} required autoFocus/>
         <label htmlFor="lastName">Last Name: </label>
         <input type="text" name='lastName' id='lastName' value={form.lastName.charAt(0).toUpperCase() + form.lastName.slice(1).toLocaleLowerCase()} onChange={handleChange} required/>
+        <label htmlFor="occupants">Occupants: </label>
+        <input type="number" name='occupants' id='occupants' value={form.occupants} onChange={handleChange} required/>
         <label htmlFor="streetNumber">Street Number: </label>
         <input type="text" name='streetNumber' id='streetNumber' value={form.streetNumber} onChange={handleChange} required/>
         <label htmlFor="streetName">Street Name: </label>
