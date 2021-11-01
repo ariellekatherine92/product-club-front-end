@@ -55,7 +55,7 @@ const Sos = (props) => {
     } catch(error) {
       throw Error
     }
-    // props.setToggle(!props.Toggle)
+    props.setToggleFetch(curr => !curr)
     props.setIsOpen(!props.isOpen)
     history.push('/emergencies')
   };
