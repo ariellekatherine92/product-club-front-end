@@ -21,14 +21,11 @@ const NewContactPopup = (props) => {
         `https://api.weatherapi.com/v1/current.json?key=${process.env.REACT_APP_API_KEY}&q=${contactForm.zipCode}&aqi=no`
       );
       const temp = getCurrentWeather.data.current.temp_f;
-      const icon = getCurrentWeather.data.current.icon;
+      // const icon = getCurrentWeather.data.current.icon;
       
       contactForm.temp = temp
-      
-      
     }
     
-    console.log(contactForm.temp)
 
   const deleteContact = async () => {
     try {
@@ -70,6 +67,7 @@ const NewContactPopup = (props) => {
     // props.setToggle(!props.Toggle)
     props.setIsOpen(!props.isOpen);
   };
+
   return (
     <div>
       <form onSubmit={handleSubmit} className="box">
