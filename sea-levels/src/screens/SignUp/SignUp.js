@@ -37,7 +37,6 @@ export default function Signup() {
             <div className="bg" />
             <div className="form-content">
                 <div className="wrapper">
-                    <h5>Welcome to Umbrella</h5>
                     <h2>Create an account</h2>
 
                     <Form onSubmit={handleSubmit}>
