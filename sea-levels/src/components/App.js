@@ -31,6 +31,7 @@ function App() {
   const [profile, setProfile] = useState({});
   const [isOpen, setIsOpen] = useState(false);
   const location = useSelector((state) => state.location);
+  const [toggleFetch, setToggleFetch] = useState(false)
 
   //Gets user objects
   useEffect(() => {
@@ -85,7 +86,7 @@ console.log('%cUserUID',"color:blue; font-weight:bold;" ,user)
           <Sos
             user={user}
             setIsOpen={setIsOpen}
-            isOpen={isOpen} /*toggle={toggleFetch} setToggle={setToggleFetch}*/
+            isOpen={isOpen}  setToggleFetch={setToggleFetch}
           />
         ) : (
           ""
@@ -104,7 +105,7 @@ console.log('%cUserUID',"color:blue; font-weight:bold;" ,user)
           <Route path="/faq" component={FAQ} />
           <Route path="/emergencies">
             <Emergencies
-              /*toggle={toggleFetch} setToggle={setToggleFetch}*/ user={user}
+              toggleFetch={toggleFetch}  user={user}
             />
           </Route>
           <Route path="/profile">

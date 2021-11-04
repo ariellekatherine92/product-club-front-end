@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './New.css';
 
+
 const New = ({ town }) => {
     const [news, setNews] = useState([]);
 

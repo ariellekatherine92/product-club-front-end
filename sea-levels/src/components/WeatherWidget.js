@@ -26,7 +26,7 @@ const WeatherWidget = ({ username, weather, ...props  }) => {
           <div className="img-wrapper">
             <img src={users} />
           </div>
-          <span>Occupants: 5</span>
+          <span>Occupants: {props.profile.occupants}</span>
         </span>
         
         <span>
