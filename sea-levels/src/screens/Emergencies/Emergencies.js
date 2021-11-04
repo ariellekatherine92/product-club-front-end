@@ -5,6 +5,7 @@ import app from "../../services/firebase";
 
 const Emergencies = (props) => {
   const [alerts, setAlerts] = useState([]);
+  
 
   useEffect(() => {
     const fetchAlerts = async () => {
@@ -15,11 +16,11 @@ const Emergencies = (props) => {
         .then((querySnapshot) => {
           const data = querySnapshot.docs.map((doc) => doc.data());
           setAlerts(data);
-          // props.setToggle(!props.toggle)
+          
         });
     };
     fetchAlerts();
-  }, [props.toggle]);
+  }, [props.toggleFetch]);
 
   return (
     <div>
@@ -27,8 +28,8 @@ const Emergencies = (props) => {
       <ul>
         {alerts.map((alert) => (
           <ol>
-            {alert.name} {alert.location} {alert.type} {alert.needs}{" "}
-            {alert.dateTime.toLocaleString()} {alert.active} 
+            {alert.name} {alert.location} {alert.type} {alert.needs}
+            {alert.dateTime.toLocaleString()}  
             <ButtonMailto label='E-Mail' mailto={'mailto:'+ alert.email}/>
           </ol>
         ))}
