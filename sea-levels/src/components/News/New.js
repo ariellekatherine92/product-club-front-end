@@ -1,59 +1,51 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
-import { useSelector } from "react-redux";
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import './New.css';
 
-const New = (props) => {
-  const [news, setNews] = useState([]);
-  const [search, setSearch] = useState(props.town);
-  const [toggle, setToggle] = useState(false);
+const New = ({ town }) => {
+    const [news, setNews] = useState([]);
 
+    useEffect(() => {
+        const fetchNews = async () => {
+            const { data } = await axios.get(`https://newsapi.org/v2/everything?q=weather&pageSize=6&apiKey=${process.env.REACT_APP_NEWS_KEY}`);
+            
+            if (!!data?.articles) {
+                setNews(data.articles);
+            }
+        };
 
-  useEffect(() => {
-    const fetchNews = async () => {
-      const getAllNews = await axios.get(`https://newsapi.org/v2/everything?q=${search}&apiKey=${process.env.REACT_APP_NEWS_KEY}
-      `);
-      const newsData = getAllNews.data.articles;
-      setNews(newsData);
-    };
-    fetchNews();
-  }, [toggle]);
+        fetchNews();
+    }, [town]);
 
-  const handleChange = (e) => {
-    const { value } = e.target;
-    setSearch(value);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setToggle((curr) => !curr);
-  };
-
-  return (
-    <div>
-      <h1>News Feed</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="search"
-          name="keyword"
-          id="keyword"
-          placeholder="Enter City"
-          value={search}
-          onChange={handleChange}
-        />
-        <button type="submit">Submit</button>
-      </form>
-      {news.map((feed) => (
-        <a href={feed.url} target='_blank'>
-        <div>
-          {feed.author}
-          {feed.publishedAt.split('', 10)}
-          {feed.title}
-          <img src={feed.urlToImage} alt={feed.title} />
+    return (
+        <div className="news-feed">
+            <h3>News Feed</h3>
+            <div className="news-container">
+                {news.map(feed => {
+                    return (
+                        <a 
+                            key={`news-item-${feed.url}`}
+                            href={feed.url} 
+                            target='_blank'>
+                            <div 
+                                className="img-container" 
+                                style={{
+                                    backgroundImage: `url(${feed.urlToImage})`,
+                                }}
+                            />
+                            <div className="content-container">
+                                <span>
+                                    {`${feed.author} - `}
+                                    <span className="light">{feed.publishedAt.split('', 10)}</span>
+                                </span>
+                                <h4>{feed.title}</h4>
+                            </div>
+                        </a>
+                    );
+                })}
+            </div>
         </div>
-        </a>
-      ))}
-    </div>
-  );
+    );
 };
 
 export default New;
