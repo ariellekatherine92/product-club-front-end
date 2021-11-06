@@ -106,7 +106,7 @@ const Sos = ({ isOpen, setIsOpen, user }) => {
             onChange={handleChange}
           />
         </div>
-        >>>>>>> 1d2ac9852bb33670fcca71a5a554fd5d5bd70bb2
+
         <button type="submit">Submit</button>
         {/*alert ? (
                     <div>
