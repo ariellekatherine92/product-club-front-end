@@ -43,10 +43,3 @@ nav.page-nav > ul > li > a {
     color: #000;
     text-decoration: none;
 }
-
-nav.page-nav > ul > li > a > .sos-btn {
-    color: #fff;
-    background:#FF0000;
-    padding: 6px;
-    border-radius: 3px;
-}

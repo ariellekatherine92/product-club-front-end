@@ -1,0 +1,62 @@
+.emergencies-container .table-wrapper {
+    border: 1px solid #ccc;
+    margin: 6rem 150px;
+    border-radius: 12px;
+}
+
+.emergencies-container .table-wrapper h3 {
+    color: #4d4d4d;
+    font-size: 20px;
+    padding: 0;
+    margin: 42px 30px 30px 30px;
+    font-size: 23px;
+}
+
+.emergencies-container .table-wrapper table {
+    width: 100%; 
+}
+
+.emergencies-container .table-wrapper table thead tr {
+    border-bottom: 1px solid #ccc;
+    color: #999999;
+}
+
+.emergencies-container .table-wrapper table thead tr th {
+    padding: 15px 30px;
+    font-weight: bold;
+}
+
+.emergencies-container .table-wrapper table tbody tr:not(:first-child) {
+    border-top: 1px solid #ccc;
+}
+
+.emergencies-container .table-wrapper table tbody tr td {
+    padding: 30px;
+    vertical-align: center;
+}
+
+.emergencies-container .table-wrapper table tbody tr td > div {
+    display: flex;
+    align-items: center;
+}
+
+.emergencies-container .table-wrapper table tbody tr td .avatar {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-image: url('../../images/default-avatar.png');
+    background-position: 50%;
+    background-size: cover;
+    display: inline-block;
+    margin-right: 30px;
+}
+
+.emergencies-container .table-wrapper table tbody tr td.date-time > div {
+    display: block;
+    margin-top: 22px;
+}
+
+.emergencies-container .table-wrapper table tbody tr td.date-time .time {
+    color: #B3B3B3;
+}
+
