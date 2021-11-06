@@ -26,15 +26,15 @@ const Sos = ({ isOpen, setIsOpen, user }) => {
     //     }
     // };
 
-    useEffect(() => {
-        const getOneEmergence = async () => {
-            const db = app.firestore();
-            const fetchOneEmergence = await db.collection('emergencies').doc(user).get();
-            const oneEmergence = fetchOneEmergence.data();
-            setAlert(oneEmergence);
-        };
-        getOneEmergence();
-    }, [user]);
+    // useEffect(() => {
+    //     const getOneEmergence = async () => {
+    //         const db = app.firestore();
+    //         const fetchOneEmergence = await db.collection('emergencies').doc(user).get();
+    //         const oneEmergence = fetchOneEmergence.data();
+    //         setAlert(oneEmergence);
+    //     };
+    //     getOneEmergence();
+    // }, [user]);
 
 
     const handleChange = (e) => {
