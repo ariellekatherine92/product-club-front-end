@@ -1,114 +1,111 @@
-import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
-import app from "../../services/firebase";
-import "./Sos.css";
+import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
+import app from '../../services/firebase';
+import './Sos.css'
 
 const Sos = ({ isOpen, setIsOpen, user }) => {
-  const [alert, setAlert] = useState({});
-  const [form, setForm] = useState({
-    dateTime: new Date().toLocaleString(),
-    name: "",
-    location: "",
-    emergency: "",
-    needs: "",
-    email: "",
-  });
-
-  const history = useHistory();
-
-  // const deleteAlert = async () => {
-  //     try {
-  //         const db = app.firestore();
-  //         await db.collection('emergencies').doc(user).update({});
-  //         await db.collection('emergencies').doc(user).delete();
-  //     } catch (error) {
-  //         console.log(error);
-  //     }
-  // };
-
-  useEffect(() => {
-    const getOneEmergence = async () => {
-      const db = app.firestore();
-      const fetchOneEmergence = await db
-        .collection("emergencies")
-        .doc(user)
-        .get();
-      const oneEmergence = fetchOneEmergence.data();
-      setAlert(oneEmergence);
-    };
-    getOneEmergence();
-  }, [user]);
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setForm({
-      ...form,
-      [name]: value,
+    const [alert, setAlert] = useState({})
+    const [form, setForm] = useState({
+        dateTime: new Date().toLocaleString(),
+        name: '',
+        location: '',
+        emergency: '',
+        needs: '',
+        email: '',
     });
-  };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const db = app.firestore();
-      await db
-        .collection("emergencies")
-        .doc(user)
-        .set({ ...form });
-    } catch (error) {
-      throw Error;
-    }
+    const history = useHistory();
 
-    setIsOpen(!isOpen);
-    history.push("/emergencies");
-  };
+    // const deleteAlert = async () => {
+    //     try {
+    //         const db = app.firestore();
+    //         await db.collection('emergencies').doc(user).update({});
+    //         await db.collection('emergencies').doc(user).delete();
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
+    // };
 
-  return (
-    <div className="popup-box">
-      <div className="click-to-close" onClick={setIsOpen.bind(this, false)} />
+    useEffect(() => {
+        const getOneEmergence = async () => {
+            const db = app.firestore();
+            const fetchOneEmergence = await db.collection('emergencies').doc(user).get();
+            const oneEmergence = fetchOneEmergence.data();
+            setAlert(oneEmergence);
+        };
+        getOneEmergence();
+    }, [user]);
 
-      <form onSubmit={handleSubmit} className="sos-form">
-        <h2>SOS</h2>
-        <div className="input-wrapper">
-          <input
-            type="text"
-            placeholder="Name"
-            name="name"
-            value={form.name}
-            onChange={handleChange}
-          />
-          <input
-            type="text"
-            placeholder="Location"
-            name="location"
-            value={form.location}
-            onChange={handleChange}
-          />
-          <input
-            type="text"
-            placeholder="Emergency"
-            name="emergency"
-            value={form.emergency}
-            onChange={handleChange}
-          />
-          <input
-            type="text"
-            placeholder="Needs"
-            name="needs"
-            value={form.needs}
-            onChange={handleChange}
-          />
-          <input
-            type="email"
-            placeholder="Email"
-            name="email"
-            checked={form.email}
-            onChange={handleChange}
-          />
-        </div>
 
-        <button type="submit">Submit</button>
-        {/*alert ? (
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setForm({
+            ...form,
+            [name]: value,
+        });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const db = app.firestore();
+            await db.collection('emergencies').doc(user).set({ ...form });
+        } catch(error) {
+            throw Error;
+        }
+
+        setIsOpen(!isOpen);
+        history.push('/emergencies');
+    };
+
+
+    return (
+        <div className="popup-box">
+            <div className="click-to-close" onClick={setIsOpen.bind(this, false)} />
+
+            <form onSubmit={handleSubmit} className="sos-form">
+                <h2>SOS</h2>
+                <div className="input-wrapper">
+                    <input
+                        type="text"
+                        placeholder="Name"
+                        name="name"
+                        value={form.name}
+                        onChange={handleChange}
+                    />
+                    <input
+                        type="text"
+                        placeholder="Location"
+                        name="location"
+                        value={form.location}
+                        onChange={handleChange}
+                    />
+                    <input
+                        type="text"
+                        placeholder="Emergency"
+                        name="emergency"
+                        value={form.emergency}
+                        onChange={handleChange}
+                    />
+                    <input
+                        type="text"
+                        placeholder="Needs"
+                        name="needs"
+                        value={form.needs}
+                        onChange={handleChange}
+                    />
+                    <input
+                        type="email"
+                        placeholder="Email"
+                        name="email"
+                        checked={form.email}
+                        onChange={handleChange}
+                    />
+                </div>
+
+                <button type="submit">Submit</button>
+
+                {/*alert ? (
                     <div>
                         {alert?.name} 
                         {alert?.location} 
@@ -118,9 +115,9 @@ const Sos = ({ isOpen, setIsOpen, user }) => {
                         <button onClick={deleteAlert}>X</button>
                     </div>
                 ) : null*/}
-      </form>
-    </div>
-  );
+            </form>
+        </div>
+    );
 };
 
 export default Sos;
