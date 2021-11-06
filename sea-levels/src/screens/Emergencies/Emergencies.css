@@ -51,12 +51,12 @@
     margin-right: 30px;
 }
 
-.emergencies-container .table-wrapper table tbody tr td.date-time > div {
+.emergencies-container .table-wrapper table tbody tr td.multi-line > div {
     display: block;
     margin-top: 22px;
 }
 
-.emergencies-container .table-wrapper table tbody tr td.date-time .time {
+.emergencies-container .table-wrapper table tbody tr td.multi-line .time {
     color: #B3B3B3;
 }
 

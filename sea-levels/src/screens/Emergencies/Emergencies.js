@@ -51,8 +51,15 @@ const Emergencies = (props) => {
                                 </td>
                                 <td><div>{location}</div></td>
                                 <td><div>{emergency}</div></td>
-                                <td><div>{needs}</div></td>
-                                <td className="date-time">
+                                <td className="multi-line">
+                                    <div>
+                                        <span>{needs}</span>
+                                        <br/>
+                                        <span className="time">{moment(dateTime).fromNow()
+                                        }</span>
+                                    </div>
+                                </td>
+                                <td className="multi-line">
                                     <div>
                                         <span className="date">{moment(dateTime).format('ll')}</span>
                                         <br/>
