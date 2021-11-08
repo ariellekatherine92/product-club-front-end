@@ -46,7 +46,6 @@ function App() {
     };
     fetchUsersAuth();
   }, []);
-console.log('%cUserUID',"color:blue; font-weight:bold;" ,user)
   useEffect(() => {
     const fetchUserData = async () => {
       try {
@@ -54,7 +53,6 @@ console.log('%cUserUID',"color:blue; font-weight:bold;" ,user)
         const doc = await db.collection(`users`).doc(user).get();
         const userInfo = doc.data();
         setProfile(userInfo);
-        console.log("%cProfile", "color:red; font-weight:bold",profile);
       } catch (error) {
         console.log(error);
       }
@@ -70,8 +68,7 @@ console.log('%cUserUID',"color:blue; font-weight:bold;" ,user)
         );
         const weatherInfo = responseOne.data;
         setWeather(weatherInfo);
-        console.log('%cWeatherInfo',"color:yellow; font-weight:bold",weatherInfo);
-      } catch (error) {
+        } catch (error) {
         console.log(error);
       }
     };
@@ -87,6 +84,7 @@ console.log('%cUserUID',"color:blue; font-weight:bold;" ,user)
             user={user}
             setIsOpen={setIsOpen}
             isOpen={isOpen}  setToggleFetch={setToggleFetch}
+            profile={profile}
           />
         ) : (
           ""
@@ -105,11 +103,11 @@ console.log('%cUserUID',"color:blue; font-weight:bold;" ,user)
           <Route path="/faq" component={FAQ} />
           <Route path="/emergencies">
             <Emergencies
-              toggleFetch={toggleFetch}  user={user}
+              toggleFetch={toggleFetch}  user={user} 
             />
           </Route>
           <Route path="/profile">
-            <Profile user={user} />
+            <Profile user={user} profile={profile}/>
           </Route>
           <Route path="/dashboard">
             <Dashboard weather={weather} profile={profile} user={user} setIsOpen={setIsOpen}

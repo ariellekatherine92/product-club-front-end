@@ -41,11 +41,13 @@ const Emergencies = (props) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {alerts.map(({ dateTime, emergency, location, name, needs }, idx) => (
+                        {alerts.map(({ dateTime, emergency, location, name, needs, avatar }, idx) => (
                             <tr key={`alert-${dateTime}-${idx}`}>
                                 <td className="contact">
                                     <div>
-                                        <div className="avatar" />
+                                      {avatar ? <img src={avatar} alt={name} width='50'/>:  <div className="avatar" /> }
+                                      
+                                      
                                         {name}
                                     </div>
                                 </td>
