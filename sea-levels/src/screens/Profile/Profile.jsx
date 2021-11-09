@@ -47,7 +47,6 @@ const Profile = ({user}) => {
     town:'',
     state:'',
     zipCode:'',
-    photoURL: '',
   })
   form.photoURL = url
   
