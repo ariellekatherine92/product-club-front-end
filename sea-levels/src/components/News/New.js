@@ -20,7 +20,7 @@ const New = ({ town }) => {
 
     useEffect(() => {
       const fetchNews = async () => {
-        const getNews = await axios.get(`https://api.mediastack.com/v1/news?access_key=${process.env.REACT_APP_WEATHER_KEY}&keywords=weather&countries=us`)
+        const getNews = await axios.get(`https://api.mediastack.com/v1/news?access_key=${process.env.REACT_APP_NEWS_KEY}&keywords=weather&countries=us`)
         const res = getNews.data.data;
         const newsArray = res.filter(data => {
           return data.image != null
