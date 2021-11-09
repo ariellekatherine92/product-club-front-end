@@ -12,44 +12,7 @@ import app from "../services/firebase";
 import axios from "axios";
 import "./ContactsWeather.css";
 
-const CONTACTS = [
-  {
-    name: "Joe V.",
-    location: "Dallas, TX",
-    weather: {
-      alert: ALERTS.NORMAL.type,
-      icon: sunny,
-      temp: 24,
-    },
-  },
-  {
-    name: "Joe V.",
-    location: "Dallas, TX",
-    weather: {
-      alert: ALERTS.WATCH.type,
-      icon: tornado,
-      temp: 24,
-    },
-  },
-  {
-    name: "Joe V.",
-    location: "Dallas, TX",
-    weather: {
-      alert: ALERTS.WARNING.type,
-      icon: fire,
-      temp: 24,
-    },
-  },
-  {
-    name: "Joe V.",
-    location: "Dallas, TX",
-    weather: {
-      alert: ALERTS.ADVISORY.type,
-      icon: heat,
-      temp: 24,
-    },
-  },
-];
+
 
 const ContactsWeather = (props) => {
   const [lists, setLists] = useState([]);
@@ -73,12 +36,12 @@ const ContactsWeather = (props) => {
     fetchContactsList();
   }, [props.user]);
 
-  const getWeather = async () => {
-    const fetchWeather = await axios.get(
-      `https://api.weatherapi.com/v1/current.json?key=${process.env.REACT_APP_API_KEY}&q=${lists.zipCode}&aqi=no`
-    );
-    const response = fetchWeather.data.current.temp_f;
-  };
+  // const getWeather = async () => {
+  //   const fetchWeather = await axios.get(
+  //     `https://api.weatherapi.com/v1/current.json?key=${process.env.REACT_APP_API_KEY}&q=${lists.zipCode}&aqi=no`
+  //   );
+  //   const response = fetchWeather.data.current.temp_f;
+  // };
 
 
 
@@ -115,9 +78,9 @@ const ContactsWeather = (props) => {
                             <img src={weather.icon} />
                         </div> */}
 
-          <div className="temperature">
+          {/* <div className="temperature">
             <span>{list?.temp}</span>
-          </div>
+          </div> */}
 
           {/* </div> */}
         </div>
