@@ -17,26 +17,25 @@ const WeatherWidget = ({ username, weather, ...props  }) => {
     const fetchWeatherSeverity = async () => {
       const getSeverity = await axios.get(`https://api.weather.gov/alerts/active?area=${props.profile.state}`);
       const severityResponse = getSeverity.data;
-      console.log(severityResponse.features.severity)
-      if (!!severityResponse.features.severity){
-        setSeverity(severityResponse.features.severity)
+      console.log('Here',severityResponse.features[0].properties.severity)
+      if (!!severityResponse.features[0].properties.severity){
+        setSeverity(severityResponse.features[0].properties.severity)
       }
     }
     fetchWeatherSeverity()
   },[])
-
   const warningColors = () => {
     switch(severity){
       case undefined:
         return <div className='divDisplay'><span>{ALERTS.NORMAL.label}</span> <div className="alert-status normal" /></div>
       case 'Minor':
-        return <div className='divDisplay'><span>{ALERTS.WATCH.label}</span> <div className="alert-status normal" /></div>
+        return <div className='divDisplay'><span>{ALERTS.WATCH.label}</span> <div className="alert-status watch" /></div>
       case 'Moderate':
-        return <div className='divDisplay'><span>{ALERTS.WATCH.label}</span> <div className="alert-status normal" /></div>;
+        return <div className='divDisplay'><span>{ALERTS.WATCH.label}</span> <div className="alert-status watch" /></div>;
       case 'Severe':
-        return <div className='divDisplay'><span>{ALERTS.WARNING.label}</span> <div className="alert-status normal" /></div>;
-      case 'Advisory':
-        return <div className='divDisplay'><span>{ALERTS.WARNING.label}</span> <div className="alert-status normal" /></div>;
+        return <div className='divDisplay'><span>{ALERTS.WARNING.label}</span> <div className="alert-status warning" /></div>;
+      case 'Extreme':
+        return <div className='divDisplay'><span>{ALERTS.ADVISORY.label}</span> <div className="alert-status advisory" /></div>;
       default:
         return
     }
