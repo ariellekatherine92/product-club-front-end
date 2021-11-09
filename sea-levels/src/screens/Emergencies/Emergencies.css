@@ -2,6 +2,7 @@
     border: 1px solid #ccc;
     margin: 6rem 150px;
     border-radius: 12px;
+    overflow-x: auto;
 }
 
 .emergencies-container .table-wrapper h3 {
@@ -40,6 +41,12 @@
     align-items: center;
 }
 
+.emergencies-container .table-wrapper table tbody tr td.contact {
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+}
+
 .emergencies-container .table-wrapper table tbody tr td .avatar {
     height: 50px;
     width: 50px;
@@ -49,6 +56,7 @@
     background-size: cover;
     display: inline-block;
     margin-right: 30px;
+    overflow: hidden;
 }
 
 .emergencies-container .table-wrapper table tbody tr td.multi-line > div {

@@ -7,15 +7,42 @@ const Emergencies = (props) => {
     const [alerts, setAlerts] = useState([]);
 
     useEffect(() => {
-        const fetchAlerts = async () => {
-            const db = app.firestore();
-            await db.collection('emergencies').get().then((querySnapshot) => {
-                const data = querySnapshot.docs.map((doc) => doc.data());
-                setAlerts(data);
-            });
-        };
+        const db = app.firestore();
 
-        fetchAlerts();
+        const fetchAlerts = new Promise(resolve => {
+            db.collection('emergencies').get().then(querySnapshot => {
+                const alerts = querySnapshot.docs.map(doc => {
+                    const data = doc.data();
+                    const userId = doc.id;
+
+                    return { ...data, userId };
+                });
+
+                resolve(alerts);
+            });
+        });
+
+        fetchAlerts.then(alerts => {
+            const alertsWithAvatars = alerts.map(alert => {
+                const fetchAvatar = new Promise(resolve => {
+                    db.collection('users').doc(alert.userId).get().then(userSnapshot => {
+                        const userData = userSnapshot.data();
+                        console.log(userData);
+                        resolve(userData.photoURL);
+                    });
+                });
+
+                return fetchAvatar.then(photoURL => {
+                    console.log(photoURL);
+                    return { ...alert, photoURL };
+                });
+            });
+
+
+            Promise.all(alertsWithAvatars).then(alerts => {
+                setAlerts(alerts);
+            });
+        });
     }, [props.toggleFetch]);
 
     console.log('Alerts',alerts);
@@ -41,15 +68,13 @@ const Emergencies = (props) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {alerts.filter(alert => alert.location === props.profile.town).map(({ dateTime, emergency, location, name, needs, avatar }, idx) => (
+                        {alerts.map(({ dateTime, emergency, location, name, needs, avatar, photoURL }, idx) => (
                             <tr key={`alert-${dateTime}-${idx}`}>
                                 <td className="contact">
-                                    <div>
-                                      {avatar ? <img src={avatar} alt={name} width='50'/>:  <div className="avatar" /> }
-                                      
-                                      
-                                        {name}
+                                    <div className="avatar">
+                                        {!!photoURL ? <img src={photoURL} alt={name} width='50'/>:  <div className="avatar" /> }
                                     </div>
+                                    <span>{name}</span>
                                 </td>
                                 <td><div>{location}</div></td>
                                 <td><div>{emergency}</div></td>
