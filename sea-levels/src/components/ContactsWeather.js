@@ -28,7 +28,7 @@ const ContactsWeather = (props) => {
     };
     fetchContactsList();
   }, [props.user]);
-console.log(lists)
+
   return (
     <div className="contacts-weather">
       <h3>Contact</h3>

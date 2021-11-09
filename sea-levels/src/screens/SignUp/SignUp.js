@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { Form, Button, Card, Alert } from 'react-bootstrap';
+import { Form, Button } from 'react-bootstrap';
 import { useAuth } from '../../contexts/AuthContext';
 import { Link, useHistory } from 'react-router-dom';
 import './SignUp.css';
@@ -10,7 +10,7 @@ export default function Signup() {
     const passwordRef = useRef();
     const passwordConfirmRef = useRef();
     const { signup } = useAuth();
-    const [error, setError] = useState('');
+    const [setError] = useState('');
     const [loading, setLoading] = useState(false);
 
     async function handleSubmit(e) {
@@ -21,12 +21,12 @@ export default function Signup() {
         }
 
         try {
-            setError('');
+            
             setLoading(true);
             await signup(emailRef.current.value, passwordRef.current.value);
             history.push('/');
-        } catch {
-            setError('Failed to create an account');
+        } catch(error) {
+            console.error('Failed to create an account');
         }
         setLoading(false);
         history.push('/profile');

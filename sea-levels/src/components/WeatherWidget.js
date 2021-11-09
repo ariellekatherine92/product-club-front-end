@@ -22,7 +22,7 @@ const WeatherWidget = ({ username, weather, ...props  }) => {
       }
     }
     fetchWeatherSeverity()
-  },[props.profile.state])
+  },[props.profile?.state])
 
   const warningColors = () => {
     switch(severity){
@@ -33,7 +33,7 @@ const WeatherWidget = ({ username, weather, ...props  }) => {
       case 'Moderate':
         return <div className='divDisplay'><span>{ALERTS.WATCH.label}</span> <div className="alert-status watch" /></div>;
       case 'Severe':
-        return <div className='divDisplay'><span>{ALERTS.WARNING.label}</span> <div className="alert-status warning" /></div>;
+        return <div className='divDisplay'><span>{ALERTS.WARNING.label}</span> <div className="alert-status advisory" /></div>;
       case 'Extreme':
         return <div className='divDisplay'><span>{ALERTS.ADVISORY.label}</span> <div className="alert-status advisory" /></div>;
       default:
