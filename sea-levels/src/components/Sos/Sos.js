@@ -12,7 +12,6 @@ const Sos = ({ isOpen, setIsOpen, user, profile }) => {
         emergency: '',
         needs: '',
         email: '',
-        avatar: profile.photoURL,
     });
 
     const history = useHistory();

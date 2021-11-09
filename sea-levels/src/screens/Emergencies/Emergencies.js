@@ -4,6 +4,9 @@ import app from '../../services/firebase';
 import './Emergencies.css';
 
 const Emergencies = (props) => {
+    const user = app.auth().currentUser;
+
+    console.log(user);
     const [alerts, setAlerts] = useState([]);
 
     useEffect(() => {
@@ -24,10 +27,12 @@ const Emergencies = (props) => {
 
         fetchAlerts.then(alerts => {
             const alertsWithAvatars = alerts.map(alert => {
-                const fetchAvatar = new Promise(resolve => {
+                const fetchAvatar = new Promise((resolve, reject) => {
                     db.collection('users').doc(alert.userId).get().then(userSnapshot => {
                         const userData = userSnapshot.data();
-                        console.log(userData);
+                        if (!userData) {
+                            reject();
+                        }
                         resolve(userData.photoURL);
                     });
                 });
