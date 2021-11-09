@@ -34,7 +34,7 @@ const Navbar = ({ user, isOpen, setIsOpen }) => {
         <nav className="page-nav">
             <ul>
                 <li>
-                    <button className="sos-btn" onClick={toggleIsOpen}>SOS</button>
+                    {user ? <button className="sos-btn" onClick={toggleIsOpen}>SOS</button> : <Link to='/signup'><button className='sos-btn'>SOS</button></Link>}
                 </li>
                 <li>
                     <Link to="/">Home</Link>

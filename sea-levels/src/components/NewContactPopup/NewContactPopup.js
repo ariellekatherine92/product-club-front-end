@@ -1,6 +1,6 @@
 import { useState } from "react";
+import {v4 as uuidv4 } from 'uuid'
 import app from "../../services/firebase";
-import axios from 'axios'
 
 const NewContactPopup = (props) => {
   const [contactForm, setContactForm] = useState({
@@ -8,34 +8,11 @@ const NewContactPopup = (props) => {
     city: "",
     state: "",
     zipCode: "",
-    icon: '',
-    temp:'',
     alert: '',
+    contactID: uuidv4(),
     userID: props.user,
   });
 
-
-    const getWeather = async () =>{
-    
-      const getCurrentWeather = await axios.get(
-        `https://api.weatherapi.com/v1/current.json?key=${process.env.REACT_APP_API_KEY}&q=${contactForm.zipCode}&aqi=no`
-      );
-      const temp = getCurrentWeather.data.current.temp_f;
-      // const icon = getCurrentWeather.data.current.icon;
-      
-      contactForm.temp = temp
-    }
-    
-
-  const deleteContact = async () => {
-    try {
-      const db = app.firestore();
-      await db.collection("contacts").doc(props.user).update({});
-      await db.collection("contacts").doc(props.user).delete();
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -48,7 +25,6 @@ const NewContactPopup = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await getWeather(contactForm.zipCode)
       const db = app.firestore();
       await db.collection("contacts").add({ ...contactForm });
       setContactForm({
@@ -64,7 +40,6 @@ const NewContactPopup = (props) => {
     } catch (error) {
       throw Error;
     }
-    // props.setToggle(!props.Toggle)
     props.setIsOpen(!props.isOpen);
   };
 
@@ -107,7 +82,6 @@ const NewContactPopup = (props) => {
           X
         </button>
         {props.content}
-        <button onClick={deleteContact}>X</button>
       </form>
     </div>
   );
