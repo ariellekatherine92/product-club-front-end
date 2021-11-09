@@ -68,15 +68,13 @@ const Emergencies = (props) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {alerts.filter(alert => alert.location === props.profile.town).map(({ dateTime, emergency, location, name, needs, avatar }, idx) => (
+                        {alerts.map(({ dateTime, emergency, location, name, needs, avatar, photoURL }, idx) => (
                             <tr key={`alert-${dateTime}-${idx}`}>
                                 <td className="contact">
-                                    <div>
-                                      {avatar ? <img src={avatar} alt={name} width='50'/>:  <div className="avatar" /> }
-                                      
-                                      
-                                        {name}
+                                    <div className="avatar">
+                                        {!!photoURL ? <img src={photoURL} alt={name} width='50'/>:  <div className="avatar" /> }
                                     </div>
+                                    <span>{name}</span>
                                 </td>
                                 <td><div>{location}</div></td>
                                 <td><div>{emergency}</div></td>

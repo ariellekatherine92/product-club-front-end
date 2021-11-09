@@ -119,12 +119,12 @@ const handUpload = e => {
 
   return (
     <div className = "signup-wrapper">
-      <form onSubmit={handUpload}>
+      {/* <form onSubmit={handUpload}>
         <label htmlFor="photo">Photo</label>
         <input type="file" id='photo' onChange={handleFileChange}/>
         <button disabled={!file}>Upload</button>
       </form>
-      <img src={url} width='300'/>
+      <img src={url} width='300'/> */}
       <form className="signup-form" onSubmit={handleSubmit}>
         <div className="avatar-container">
           <input
