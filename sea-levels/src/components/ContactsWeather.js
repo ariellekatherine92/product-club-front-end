@@ -23,17 +23,28 @@ const ContactsWeather = (props) => {
           items.push(doc.data());
         });
         setLists(items);
-        console.log(items);
       });
     };
     fetchContactsList();
   }, [props.user]);
 
+  const deleteContact = async () => {
+    try {
+      const db = app.firestore();
+      const remove = await db.collection("contacts").doc().where('contactID', '==', lists.contactID);
+      remove.delete();
+      console.log(remove)
+      // await db.collection("contacts").doc(props.user).update({});
+      // await db.collection("contacts").doc(props.user).delete();
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div className="contacts-weather">
       <h3>Contact</h3>
       {lists.map((list) => (
-        <div key={list.name} className="contact-card">
+        <div key={list.contactID} className="contact-card">
           <div className="contact-info">
             <span>
               <div className="img-wrapper">
@@ -54,6 +65,7 @@ const ContactsWeather = (props) => {
               </span>
             </span>
           </div>
+          <button onClick={deleteContact}>Delete</button>
         </div>
       ))}
 

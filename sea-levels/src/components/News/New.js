@@ -13,7 +13,6 @@ const New = ({ town }) => {
         const newsArray = res.filter(data => {
           return data.image != null
         })
-        console.log(newsArray)
         setNews(newsArray)
       }
       fetchNews();
