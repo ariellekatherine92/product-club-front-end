@@ -4,21 +4,64 @@ import app from '../../services/firebase';
 import './Emergencies.css';
 
 const Emergencies = (props) => {
-    const [alerts, setAlerts] = useState([]);
+  const currentUser = app.auth().currentUser;
+  const [alerts, setAlerts] = useState([]);
+  const [render, setRender] = useState(false)
 
     useEffect(() => {
-        const fetchAlerts = async () => {
-            const db = app.firestore();
-            await db.collection('emergencies').get().then((querySnapshot) => {
-                const data = querySnapshot.docs.map((doc) => doc.data());
-                setAlerts(data);
+        const db = app.firestore();
+
+        const fetchAlerts = new Promise(resolve => {
+            db.collection('emergencies').get().then(querySnapshot => {
+                const alerts = querySnapshot.docs.map(doc => {
+                    const data = doc.data();
+                    const userId = doc.id;
+
+                    return { ...data, userId };
+                });
+
+                resolve(alerts);
             });
-        };
+        });
 
-        fetchAlerts();
-    }, [props.toggleFetch]);
+        fetchAlerts.then(alerts => {
+            const alertsWithAvatars = alerts.map(alert => {
+              const fetchAvatar = new Promise((resolve, reject) => {
+                db.collection('users').doc(alert.userId).get().then(userSnapshot => {
+                    const userData = userSnapshot.data();
+                    if (!userData) {
+                        reject();
+                    }
+                    resolve(userData.photoURL);
+                });
+            });
 
-    console.log('Alerts',alerts);
+                return fetchAvatar.then(photoURL => {
+                    console.log(photoURL);
+                    return { ...alert, photoURL };
+                });
+            });
+
+
+            Promise.all(alertsWithAvatars).then(alerts => {
+                setAlerts(alerts);
+            });
+        });
+    }, [render]);
+
+ const deleteAlert = async () => {
+        try {
+            const db = app.firestore();
+            await db.collection('emergencies').doc(currentUser.uid).update({});
+            await db.collection('emergencies').doc(currentUser.uid).delete();
+            setRender((curr) => !curr)
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+  
+
 
     return (
         <div className="emergencies-container">
@@ -41,15 +84,13 @@ const Emergencies = (props) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {alerts.filter(alert => alert.location === props.profile.town).map(({ dateTime, emergency, location, name, needs, avatar }, idx) => (
+                        {alerts.map(({ dateTime, emergency, location, name, needs, userId, photoURL }, idx) => (
                             <tr key={`alert-${dateTime}-${idx}`}>
                                 <td className="contact">
-                                    <div>
-                                      {avatar ? <img src={avatar} alt={name} width='50'/>:  <div className="avatar" /> }
-                                      
-                                      
-                                        {name}
+                                    <div className="avatar">
+                                        {!!photoURL ? <img src={photoURL} alt={name} width='50'/>:  <div className="avatar" /> }
                                     </div>
+                                    <span>{name}</span>
                                 </td>
                                 <td><div>{location}</div></td>
                                 <td><div>{emergency}</div></td>
@@ -69,6 +110,8 @@ const Emergencies = (props) => {
                                     </div>
                                 </td>
                                 <td><div>Active</div></td>
+                                {userId === currentUser.uid ? <td><button onClick={deleteAlert}>remove</button></td> : null}
+                                
                             </tr>
                         ))}
                     </tbody>

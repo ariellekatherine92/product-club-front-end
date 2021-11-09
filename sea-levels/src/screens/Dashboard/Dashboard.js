@@ -12,7 +12,7 @@ export default function Dashboard(props) {
   return (
     <div className="dashboard-page">
       <section>
-        <h2>{`Welcome back, ${props.profile.firstName}!`}</h2>
+        <h2>{`Welcome back, ${props.profile?.firstName}!`}</h2>
         <WeatherWidget
           profile={props.profile}
           weather={props.weather}
