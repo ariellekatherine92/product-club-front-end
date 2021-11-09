@@ -4,7 +4,9 @@ import app from '../../services/firebase';
 import './Emergencies.css';
 
 const Emergencies = (props) => {
-    const [alerts, setAlerts] = useState([]);
+  const currentUser = app.auth().currentUser;
+  const [alerts, setAlerts] = useState([]);
+  const [render, setRender] = useState(false)
 
     useEffect(() => {
         const db = app.firestore();
@@ -24,13 +26,15 @@ const Emergencies = (props) => {
 
         fetchAlerts.then(alerts => {
             const alertsWithAvatars = alerts.map(alert => {
-                const fetchAvatar = new Promise(resolve => {
-                    db.collection('users').doc(alert.userId).get().then(userSnapshot => {
-                        const userData = userSnapshot.data();
-                        console.log(userData);
-                        resolve(userData.photoURL);
-                    });
+              const fetchAvatar = new Promise((resolve, reject) => {
+                db.collection('users').doc(alert.userId).get().then(userSnapshot => {
+                    const userData = userSnapshot.data();
+                    if (!userData) {
+                        reject();
+                    }
+                    resolve(userData.photoURL);
                 });
+            });
 
                 return fetchAvatar.then(photoURL => {
                     console.log(photoURL);
@@ -43,9 +47,21 @@ const Emergencies = (props) => {
                 setAlerts(alerts);
             });
         });
-    }, [props.toggleFetch]);
+    }, [render]);
 
-    console.log('Alerts',alerts);
+ const deleteAlert = async () => {
+        try {
+            const db = app.firestore();
+            await db.collection('emergencies').doc(currentUser.uid).update({});
+            await db.collection('emergencies').doc(currentUser.uid).delete();
+            setRender((curr) => !curr)
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+  
+
 
     return (
         <div className="emergencies-container">
@@ -68,7 +84,7 @@ const Emergencies = (props) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {alerts.map(({ dateTime, emergency, location, name, needs, avatar, photoURL }, idx) => (
+                        {alerts.map(({ dateTime, emergency, location, name, needs, userId, photoURL }, idx) => (
                             <tr key={`alert-${dateTime}-${idx}`}>
                                 <td className="contact">
                                     <div className="avatar">
@@ -94,6 +110,8 @@ const Emergencies = (props) => {
                                     </div>
                                 </td>
                                 <td><div>Active</div></td>
+                                {userId === currentUser.uid ? <td><button onClick={deleteAlert}>remove</button></td> : null}
+                                
                             </tr>
                         ))}
                     </tbody>

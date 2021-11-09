@@ -12,31 +12,11 @@ const Sos = ({ isOpen, setIsOpen, user, profile }) => {
         emergency: '',
         needs: '',
         email: '',
-        avatar: profile.photoURL,
     });
 
     const history = useHistory();
 
-    // const deleteAlert = async () => {
-    //     try {
-    //         const db = app.firestore();
-    //         await db.collection('emergencies').doc(user).update({});
-    //         await db.collection('emergencies').doc(user).delete();
-    //     } catch (error) {
-    //         console.log(error);
-    //     }
-    // };
-
-    // useEffect(() => {
-    //     const getOneEmergence = async () => {
-    //         const db = app.firestore();
-    //         const fetchOneEmergence = await db.collection('emergencies').doc(user).get();
-    //         const oneEmergence = fetchOneEmergence.data();
-    //         setAlert(oneEmergence);
-    //     };
-    //     getOneEmergence();
-    // }, [user]);
-
+   
 
     const handleChange = (e) => {
         const { name, value } = e.target;
