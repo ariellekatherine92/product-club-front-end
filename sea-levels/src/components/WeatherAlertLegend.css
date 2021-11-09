@@ -22,7 +22,7 @@
     padding: 12px;
 }
 
-.weather-alert-legend .alert-status {
+.alert-status {
     width: 24px;
     height: 24px;
     border-radius: 50%;

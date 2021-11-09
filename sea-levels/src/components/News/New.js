@@ -6,17 +6,30 @@ import './New.css';
 const New = ({ town }) => {
     const [news, setNews] = useState([]);
 
-    useEffect(() => {
-        const fetchNews = async () => {
-            const { data } = await axios.get(`https://newsapi.org/v2/everything?q=weather&pageSize=6&apiKey=${process.env.REACT_APP_NEWS_KEY}`);
+    // useEffect(() => {
+    //     const fetchNews = async () => {
+    //         const { data } = await axios.get(`https://newsapi.org/v2/everything?q=weather&pageSize=6&apiKey=${process.env.REACT_APP_NEWS_KEY}`);
             
-            if (!!data?.articles) {
-                setNews(data.articles);
-            }
-        };
+    //         if (!!data?.articles) {
+    //             setNews(data.articles);
+    //         }
+    //     };
 
-        fetchNews();
-    }, [town]);
+    //     fetchNews();
+    // }, [town]);
+
+    useEffect(() => {
+      const fetchNews = async () => {
+        const getNews = await axios.get(`https://api.mediastack.com/v1/news?access_key=${process.env.REACT_APP_WEATHER_KEY}&keywords=weather&countries=us`)
+        const res = getNews.data.data;
+        const newsArray = res.filter(data => {
+          return data.image != null
+        })
+        console.log(newsArray)
+        setNews(newsArray)
+      }
+      fetchNews();
+    },[town])
 
     return (
         <div className="news-feed">
@@ -31,13 +44,13 @@ const New = ({ town }) => {
                             <div 
                                 className="img-container" 
                                 style={{
-                                    backgroundImage: `url(${feed.urlToImage})`,
+                                    backgroundImage: `url(${feed.image})`,
                                 }}
                             />
                             <div className="content-container">
                                 <span>
                                     {`${feed.author} - `}
-                                    <span className="light">{feed.publishedAt.split('', 10)}</span>
+                                    <span className="light">{feed.published_at.split('', 10)}</span>
                                 </span>
                                 <h4>{feed.title}</h4>
                             </div>

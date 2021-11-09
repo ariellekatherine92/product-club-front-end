@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import app from '../../services/firebase';
 import './Sos.css'
 
-const Sos = ({ isOpen, setIsOpen, user }) => {
+const Sos = ({ isOpen, setIsOpen, user, profile }) => {
     const [alert, setAlert] = useState({})
     const [form, setForm] = useState({
         dateTime: new Date().toLocaleString(),
@@ -12,6 +12,7 @@ const Sos = ({ isOpen, setIsOpen, user }) => {
         emergency: '',
         needs: '',
         email: '',
+        avatar: profile.photoURL,
     });
 
     const history = useHistory();
