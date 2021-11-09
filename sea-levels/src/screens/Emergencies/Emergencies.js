@@ -37,7 +37,6 @@ const Emergencies = (props) => {
             });
 
                 return fetchAvatar.then(photoURL => {
-                    console.log(photoURL);
                     return { ...alert, photoURL };
                 });
             });

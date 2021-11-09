@@ -19,7 +19,7 @@ const SignOut = () => {
     }
     signOutUser()
 
-  },[])
+  },[history,logout,setError])
   return (
     <div>
       

@@ -14,12 +14,12 @@ export const ALERTS = {
     },
     WARNING: {
         type: 'warning',
-        label: 'WARNING',
+        label: 'ADVISORY',
         description: 'Severe weather is expected but is not considered to be life-threatening.',
     },
     ADVISORY: {
         type: 'advisory',
-        label: 'ADVISORY',
+        label: 'WARNING',
         description: 'Life-threatening weather is expected. Take Action!',
     },
 };

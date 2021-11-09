@@ -67,7 +67,6 @@ function App() {
         );
         const weatherInfo = responseOne.data;
         setWeather(weatherInfo);
-        console.log('%cWeatherInfo',"color:yellow; font-weight:bold",weatherInfo);
       } catch (error) {
         console.log(error);
       }
