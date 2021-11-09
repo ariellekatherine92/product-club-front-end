@@ -17,13 +17,13 @@ const WeatherWidget = ({ username, weather, ...props  }) => {
     const fetchWeatherSeverity = async () => {
       const getSeverity = await axios.get(`https://api.weather.gov/alerts/active?area=${props.profile.state}`);
       const severityResponse = getSeverity.data;
-      console.log('Here',severityResponse.features[0].properties.severity)
-      if (!!severityResponse.features[0].properties.severity){
+      if (!!severityResponse.features[0]?.properties?.severity){
         setSeverity(severityResponse.features[0].properties.severity)
       }
     }
     fetchWeatherSeverity()
   },[])
+
   const warningColors = () => {
     switch(severity){
       case undefined:

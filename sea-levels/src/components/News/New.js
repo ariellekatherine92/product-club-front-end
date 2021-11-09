@@ -5,19 +5,7 @@ import './New.css';
 
 const New = ({ town }) => {
     const [news, setNews] = useState([]);
-
-    // useEffect(() => {
-    //     const fetchNews = async () => {
-    //         const { data } = await axios.get(`https://newsapi.org/v2/everything?q=weather&pageSize=6&apiKey=${process.env.REACT_APP_NEWS_KEY}`);
-            
-    //         if (!!data?.articles) {
-    //             setNews(data.articles);
-    //         }
-    //     };
-
-    //     fetchNews();
-    // }, [town]);
-
+    
     useEffect(() => {
       const fetchNews = async () => {
         const getNews = await axios.get(`https://api.mediastack.com/v1/news?access_key=${process.env.REACT_APP_NEWS_KEY}&keywords=weather&countries=us`)
@@ -39,6 +27,7 @@ const New = ({ town }) => {
                     return (
                         <a 
                             key={`news-item-${feed.url}`}
+                            rel="noreferrer"
                             href={feed.url} 
                             target='_blank'>
                             <div 
