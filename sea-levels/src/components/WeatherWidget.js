@@ -12,7 +12,7 @@ const WeatherWidget = ({ username, weather, ...props  }) => {
   const zip = useSelector(({ location }) => location);
   const [severity, setSeverity] = useState()
 
-  console.log(props.profile)
+  
   useEffect(() => {
     const fetchWeatherSeverity = async () => {
       const getSeverity = await axios.get(`https://api.weather.gov/alerts/active?area=${props.profile.state}`);
@@ -22,7 +22,7 @@ const WeatherWidget = ({ username, weather, ...props  }) => {
       }
     }
     fetchWeatherSeverity()
-  },[])
+  },[props.profile.state])
 
   const warningColors = () => {
     switch(severity){
@@ -43,25 +43,25 @@ const WeatherWidget = ({ username, weather, ...props  }) => {
   return (
     <div className="weather-widget">
       <div className="user-details">
-        <h5><img src={contact} /> {props.profile.firstName}</h5>
+        <h5><img src={contact} alt={props.profile.firstName}/> {props.profile.firstName}</h5>
 
         <span>
           <div className="img-wrapper">
-            <img src={location} />
+            <img src={location} alt={location}/>
           </div>
           <span>{`${weather.location?.name}, ${weather.location?.region} ${zip}`}</span>
         </span>
 
         <span>
           <div className="img-wrapper">
-            <img src={users} />
+            <img src={users} alt={users}/>
           </div>
           <span>Occupants: {props.profile.occupants}</span>
         </span>
         
         <span>
           <div className="img-wrapper">
-            <img src={home} />
+            <img src={home} alt={home}/>
           </div>
           <span>
             Status: <span className="safe">safe</span>
@@ -71,7 +71,7 @@ const WeatherWidget = ({ username, weather, ...props  }) => {
 
       <div className="weather-details">
         <div className="conditions">
-          <img className="weather-icon" src={weather?.current?.condition?.icon} />
+          <img className="weather-icon" src={weather?.current?.condition?.icon} alt={weather?.current?.condition?.icon}/>
           <span className="temp">{weather.current?.temp_f}</span>
         </div>
 
