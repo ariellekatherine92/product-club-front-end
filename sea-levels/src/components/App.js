@@ -110,7 +110,7 @@ function App() {
             <Profile user={user} profile={profile}/>
           </Route>
           <Route path="/dashboard">
-            <Dashboard weather={weather} profile={profile} user={user} setIsOpen={setIsOpen}
+            <Dashboard weather={weather} profile={profile} user={user} setIsOpen={setIsOpen} 
             isOpen={isOpen}/>
           </Route>
         </Switch>

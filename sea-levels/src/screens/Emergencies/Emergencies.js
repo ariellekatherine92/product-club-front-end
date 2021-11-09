@@ -47,7 +47,7 @@ const Emergencies = (props) => {
                 setAlerts(alerts);
             });
         });
-    }, [render]);
+    }, [render,props.toggleFetch]);
 
  const deleteAlert = async () => {
         try {
