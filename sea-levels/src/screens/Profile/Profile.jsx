@@ -48,12 +48,13 @@ const Profile = ({user}) => {
     state:'',
     zipCode:'',
   })
-  form.photoURL = url
+
+  const [photoURL, setPhotoURL] = useState('');
   
   const handleFileChange = e => {
     setFile(e.target.files[0]);
   }
-console.log('FILE',file?.name)
+
 
 const handUpload = e => {
   e.preventDefault();
@@ -82,7 +83,8 @@ const handUpload = e => {
   const handleSubmit = async (event) => {
     event.preventDefault()
     const db = app.firestore()
-    await db.collection('users').doc(user).set({...form})
+    console.log({ ...form, photoURL });
+    await db.collection('users').doc(user).set({ ...form, photoURL })
 
     history.push('/')
   }
@@ -100,21 +102,14 @@ const handUpload = e => {
 
       uploadUserAvatar(target.files[0]).then(photoURL => {
           const db = app.firestore();
-
+          setPhotoURL(photoURL);
           db.collection('users').doc(user).update({ photoURL });
-          console.log(photoURL);
           console.log('done!');
       }, error => {
           console.error(error);
           console.log('done!');
       });
   };
-
-  const currentUser = app.auth().currentUser;
-
-  console.log(currentUser.photoURL);
-
-  ///HYeKTTjwssbMKbw71ZmEWvtcuHr2 
 
   return (
     <div className = "signup-wrapper">
