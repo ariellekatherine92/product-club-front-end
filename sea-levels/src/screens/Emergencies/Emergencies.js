@@ -81,6 +81,7 @@ const Emergencies = (props) => {
               <th>Needs</th>
               <th>Date</th>
               <th>Status</th>
+              <th>Email</th>
             </tr>
           </thead>
           <tbody>
@@ -94,6 +95,7 @@ const Emergencies = (props) => {
                   needs,
                   userId,
                   photoURL,
+                  email,
                 },
                 idx
               ) => (
@@ -135,11 +137,14 @@ const Emergencies = (props) => {
                   <td>
                     <div>Active</div>
                   </td>
-                  {userId === currentUser.uid ? (
-                    <td>
-                      <button onClick={deleteAlert}>remove</button>
-                    </td>
-                  ) : null}
+                  <div>
+                    <a href={`mailto:${email}`}><button>Email</button></a>
+                    {userId === currentUser.uid ? (
+                      <td>
+                        <button onClick={deleteAlert}>Remove</button>
+                      </td>
+                    ) : null}
+                  </div>
                 </tr>
               )
             )}
