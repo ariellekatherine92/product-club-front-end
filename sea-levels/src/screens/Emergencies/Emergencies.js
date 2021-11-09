@@ -7,15 +7,42 @@ const Emergencies = (props) => {
     const [alerts, setAlerts] = useState([]);
 
     useEffect(() => {
-        const fetchAlerts = async () => {
-            const db = app.firestore();
-            await db.collection('emergencies').get().then((querySnapshot) => {
-                const data = querySnapshot.docs.map((doc) => doc.data());
-                setAlerts(data);
-            });
-        };
+        const db = app.firestore();
 
-        fetchAlerts();
+        const fetchAlerts = new Promise(resolve => {
+            db.collection('emergencies').get().then(querySnapshot => {
+                const alerts = querySnapshot.docs.map(doc => {
+                    const data = doc.data();
+                    const userId = doc.id;
+
+                    return { ...data, userId };
+                });
+
+                resolve(alerts);
+            });
+        });
+
+        fetchAlerts.then(alerts => {
+            const alertsWithAvatars = alerts.map(alert => {
+                const fetchAvatar = new Promise(resolve => {
+                    db.collection('users').doc(alert.userId).get().then(userSnapshot => {
+                        const userData = userSnapshot.data();
+                        console.log(userData);
+                        resolve(userData.photoURL);
+                    });
+                });
+
+                return fetchAvatar.then(photoURL => {
+                    console.log(photoURL);
+                    return { ...alert, photoURL };
+                });
+            });
+
+
+            Promise.all(alertsWithAvatars).then(alerts => {
+                setAlerts(alerts);
+            });
+        });
     }, [props.toggleFetch]);
 
     console.log(alerts);
@@ -41,34 +68,42 @@ const Emergencies = (props) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {alerts.map(({ dateTime, emergency, location, name, needs }, idx) => (
-                            <tr key={`alert-${dateTime}-${idx}`}>
-                                <td className="contact">
-                                    <div>
-                                        <div className="avatar" />
-                                        {name}
-                                    </div>
-                                </td>
-                                <td><div>{location}</div></td>
-                                <td><div>{emergency}</div></td>
-                                <td className="multi-line">
-                                    <div>
-                                        <span>{needs}</span>
-                                        <br/>
-                                        <span className="time">{moment(dateTime).fromNow()
-                                        }</span>
-                                    </div>
-                                </td>
-                                <td className="multi-line">
-                                    <div>
-                                        <span className="date">{moment(dateTime).format('ll')}</span>
-                                        <br/>
-                                        <span className="time">{moment(dateTime).format('LT')}</span>
-                                    </div>
-                                </td>
-                                <td><div>Active</div></td>
-                            </tr>
-                        ))}
+                        {alerts.map(({ photoURL, dateTime, emergency, location, name, needs }, idx) => {
+                            console.log(photoURL);
+                            return (
+                                <tr key={`alert-${dateTime}-${idx}`}>
+                                    <td className="contact">
+                                        <div>
+                                            <div 
+                                                className="avatar" 
+                                                style={{ 
+                                                    backgroundImage : !!photoURL ? `url('${photoURL}')` : undefined,
+                                                }}
+                                            />
+                                            {name}
+                                        </div>
+                                    </td>
+                                    <td><div>{location}</div></td>
+                                    <td><div>{emergency}</div></td>
+                                    <td className="multi-line">
+                                        <div>
+                                            <span>{needs}</span>
+                                            <br/>
+                                            <span className="time">{moment(dateTime).fromNow()
+                                            }</span>
+                                        </div>
+                                    </td>
+                                    <td className="multi-line">
+                                        <div>
+                                            <span className="date">{moment(dateTime).format('ll')}</span>
+                                            <br/>
+                                            <span className="time">{moment(dateTime).format('LT')}</span>
+                                        </div>
+                                    </td>
+                                    <td><div>Active</div></td>
+                                </tr>
+                            );
+                        })}
                     </tbody>
                 </table>
             </div>
