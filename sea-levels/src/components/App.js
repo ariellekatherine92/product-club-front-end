@@ -104,7 +104,7 @@ function App() {
           <Route path="/faq" component={FAQ} />
           <Route path="/emergencies">
             <Emergencies
-              toggleFetch={toggleFetch}  user={user} 
+              toggleFetch={toggleFetch}  user={user} profile={profile}
             />
           </Route>
           <Route path="/profile">

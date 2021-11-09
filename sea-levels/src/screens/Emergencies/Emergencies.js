@@ -18,7 +18,7 @@ const Emergencies = (props) => {
         fetchAlerts();
     }, [props.toggleFetch]);
 
-    console.log(alerts);
+    console.log('Alerts',alerts);
 
     return (
         <div className="emergencies-container">
@@ -41,7 +41,7 @@ const Emergencies = (props) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {alerts.map(({ dateTime, emergency, location, name, needs, avatar }, idx) => (
+                        {alerts.filter(alert => alert.location === props.profile.town).map(({ dateTime, emergency, location, name, needs, avatar }, idx) => (
                             <tr key={`alert-${dateTime}-${idx}`}>
                                 <td className="contact">
                                     <div>
