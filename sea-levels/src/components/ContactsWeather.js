@@ -114,7 +114,7 @@ const ContactsWeather = (props) => {
             </div>{" "}
             *
             <div className="temperature">
-              <span>{Math.round(zipWeather[list.zipCode]?.temp_f)}</span>
+              <span>{Math.round(zipWeather[list.zipCode]?.temp_f).toString()}</span>
             </div>
           </div>
           <button className='contact-delete-btn' onClick={deleteContact.bind(this, list.docID)}>X</button>
