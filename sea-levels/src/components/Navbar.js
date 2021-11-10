@@ -60,7 +60,7 @@ const Navbar = ({ user, isOpen, setIsOpen, avatar }) => {
                     <Link to="/">Home</Link>
                 </li>
                 <li>
-                    <Link to="/emergencies">Emergencies</Link>
+                    <Link to="/emergencies">Ongoing Emergencies</Link>
                 </li>
 
                 <AuthLinks isAuthenticated={!!user} avatar={avatar} />
