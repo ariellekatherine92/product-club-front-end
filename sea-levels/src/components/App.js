@@ -45,13 +45,18 @@ function App() {
     };
     fetchUsersAuth();
   }, []);
+
   useEffect(() => {
     const fetchUserData = async () => {
       try {
         const db = app.firestore();
         const doc = await db.collection(`users`).doc(user).get();
         const userInfo = doc.data();
-        setProfile(userInfo);
+        if(userInfo){
+          setProfile(userInfo);
+        } else {
+          console.log("No user info found")
+        }
       } catch (error) {
         console.log(error);
       }
