@@ -1,8 +1,9 @@
 import React from "react";
+import axios from "axios";
 import contact from "../images/ic-contact.png";
 import location from "../images/ic-location.png";
 import heart from "../images/ic-heart.png";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import app from "../services/firebase";
 import "./ContactsWeather.css";
 
@@ -10,6 +11,8 @@ import "./ContactsWeather.css";
 
 const ContactsWeather = (props) => {
   const [lists, setLists] = useState([]);
+  const [zipWeather, setZipWeather] = useState({});
+
   const toggleIsOpen = () => {
     props.setIsOpen(!props.isOpen);
   };
@@ -29,6 +32,40 @@ const ContactsWeather = (props) => {
     };
     fetchContactsList();
   }, [props.user]);
+
+  const uniqueZips = useMemo(() => {
+    return lists.reduce((acc, { zipCode }) => {
+      if (!acc.includes(zipCode)) {
+        acc.push(zipCode);
+      }
+      return acc;
+    }, []);
+  }, [lists]);
+
+  useEffect(() => {
+    const weatherPromises = uniqueZips.map(zip => {
+      return new Promise((resolve, reject) => {
+        const baseURL = 'https://api.weatherapi.com/v1/current.json';
+        axios.get(`${baseURL}?key=${process.env.REACT_APP_API_KEY}&q=${zip}&aqi=no`).then(resp => {
+          resolve({ ...resp?.data?.current, zip });
+        }, error => {
+          reject(error);
+        });
+      });
+    });
+
+    Promise.all(weatherPromises).then(resp => {
+      const weatherResps = resp.reduce((acc, { zip, ...weather }) => {
+        acc[zip] = weather;
+
+        return acc;
+      }, {});
+
+      setZipWeather(weatherResps);
+    });
+  }, [uniqueZips]);
+
+  console.log(zipWeather);
 
   const deleteContact = async (docID) => {
     console.log(docID)
@@ -62,6 +99,7 @@ const ContactsWeather = (props) => {
               <span>
                 {list.city},{list.state} {list.zipCode}
               </span>
+              <span>{zipWeather[list.zipCode]?.temp_f}</span>
             </span>
           </div>
           <button onClick={deleteContact.bind(this,list.docID)}>Delete</button>
