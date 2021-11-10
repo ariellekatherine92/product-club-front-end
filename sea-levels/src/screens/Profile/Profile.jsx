@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import app from '../../services/firebase';
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
@@ -100,6 +100,26 @@ const Profile = ({ user, changeNavAvatar }) => {
 			return defaultAvatar;
 		}
 	}, [currentUser, photoURL]);
+
+	useEffect(() => {
+		const fetchUserData = async () => {
+			if (!user) return;
+
+			try {
+				const db = app.firestore();
+				const doc = await db.collection('users').doc(user).get();
+				const userInfo = doc.data();
+
+				if (!!userInfo) {
+					setForm({ ...userInfo });
+				}
+			} catch (error) {
+				console.error(error);
+			}
+		};
+
+		fetchUserData();
+	}, [user]);
 
 	return (
 		<div className="profile-container">
