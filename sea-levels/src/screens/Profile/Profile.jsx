@@ -35,7 +35,7 @@ const uploadUserAvatar = file => {
 	});
 };
 
-const Profile = ({ user }) => {
+const Profile = ({ user, changeNavAvatar }) => {
 	const history = useHistory();
 
 	const [form, setForm] = useState({
@@ -84,6 +84,7 @@ const Profile = ({ user }) => {
 			const db = app.firestore();
 			setPhotoURL(photoURL);
 			db.collection('users').doc(user).update({ photoURL });
+			changeNavAvatar(photoURL);
 			console.log('done!');
 		}, error => {
 			console.error(error);
@@ -99,8 +100,6 @@ const Profile = ({ user }) => {
 			return defaultAvatar;
 		}
 	}, [currentUser, photoURL]);
-
-	console.log(avatar);
 
 	return (
 		<div className="profile-container">

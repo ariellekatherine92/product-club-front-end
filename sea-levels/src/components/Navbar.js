@@ -1,20 +1,10 @@
 import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import app from '../services/firebase';
-import defaultAvatar from '../images/default-avatar.png';
+
 import './Navbar.css';
 
-const ProfileImage = () => {
-    const user = app.auth().currentUser;
-
-    const avatar = useMemo(() => {
-        if (!!user?.photoURL) {
-            return user.photoURL;
-        } else {
-            return defaultAvatar;
-        }
-    }, [user]);
-
+const ProfileImage = ({ avatar }) => {
     return (
         <Link to="/profile">
             <div className="avatar-container">
@@ -30,7 +20,7 @@ const ProfileImage = () => {
     );
 };
 
-const AuthLinks = ({ isAuthenticated }) => isAuthenticated ? (
+const AuthLinks = ({ isAuthenticated, avatar }) => isAuthenticated ? (
     <>
         <li>
             <Link to="/dashboard">Dashboard</Link>
@@ -39,7 +29,7 @@ const AuthLinks = ({ isAuthenticated }) => isAuthenticated ? (
             <Link to="/signout">Sign Out</Link>
         </li>
         <li>
-            <ProfileImage />
+            <ProfileImage avatar={avatar} />
         </li>
     </>
 ) : (
@@ -55,7 +45,7 @@ const AuthLinks = ({ isAuthenticated }) => isAuthenticated ? (
     </>
 );
 
-const Navbar = ({ user, isOpen, setIsOpen }) => {
+const Navbar = ({ user, isOpen, setIsOpen, avatar }) => {
     const toggleIsOpen = () => {
         setIsOpen(!isOpen);
     };
@@ -73,7 +63,7 @@ const Navbar = ({ user, isOpen, setIsOpen }) => {
                     <Link to="/emergencies">Emergencies</Link>
                 </li>
 
-                <AuthLinks isAuthenticated={!!user} />
+                <AuthLinks isAuthenticated={!!user} avatar={avatar} />
             </ul>
         </nav>
     );
