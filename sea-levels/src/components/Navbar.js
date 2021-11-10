@@ -1,6 +1,34 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
+import app from '../services/firebase';
+import defaultAvatar from '../images/default-avatar.png';
 import './Navbar.css';
+
+const ProfileImage = () => {
+    const user = app.auth().currentUser;
+
+    const avatar = useMemo(() => {
+        if (!!user?.photoURL) {
+            return user.photoURL;
+        } else {
+            return defaultAvatar;
+        }
+    }, [user]);
+
+    return (
+        <Link to="/profile">
+            <div className="avatar-container">
+                <div className="avatar-mask">
+                    <img
+                        className="avatar"
+                        src={avatar}
+                        alt="Upload Photo"
+                    />
+                </div>
+            </div>
+        </Link>
+    );
+};
 
 const AuthLinks = ({ isAuthenticated }) => isAuthenticated ? (
     <>
@@ -10,7 +38,9 @@ const AuthLinks = ({ isAuthenticated }) => isAuthenticated ? (
         <li>
             <Link to="/signout">Sign Out</Link>
         </li>
-        {/* <li className="nav-user-name">{props.client?.name}</li> */}
+        <li>
+            <ProfileImage />
+        </li>
     </>
 ) : (
     <>
