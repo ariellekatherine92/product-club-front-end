@@ -64,7 +64,7 @@ const Navbar = ({ user, isOpen, setIsOpen }) => {
         <nav className="page-nav">
             <ul>
                 <li>
-                    {user ? <button className="sos-btn" onClick={toggleIsOpen}>SOS Request</button> : <Link to='/signup'><button className='sos-btn'>SOS</button></Link>}
+                    {user ? <button className="sos-btn" onClick={toggleIsOpen}>SOS Request</button> : <Link to='/signup'><button className='sos-btn'>SOS Request</button></Link>}
                 </li>
                 <li>
                     <Link to="/">Home</Link>
