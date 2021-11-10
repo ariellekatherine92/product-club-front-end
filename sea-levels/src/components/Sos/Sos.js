@@ -45,7 +45,7 @@ const Sos = ({ isOpen, setIsOpen, user, setToggleFetch }) => {
       <div className="click-to-close" onClick={setIsOpen.bind(this, false)} />
 
       <form onSubmit={handleSubmit} className="sos-form">
-        <h2>SOS</h2>
+        <h2>SOS Request</h2>
         <div className="input-wrapper">
           <input
             type="text"
