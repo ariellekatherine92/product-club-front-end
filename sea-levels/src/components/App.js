@@ -48,6 +48,9 @@ function App() {
 
   useEffect(() => {
     const fetchUserData = async () => {
+      if(!user) {
+        return;
+      }
       try {
         const db = app.firestore();
         const doc = await db.collection(`users`).doc(user).get();
