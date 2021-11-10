@@ -137,14 +137,14 @@ const Emergencies = (props) => {
                   <td>
                     <div>Active</div>
                   </td>
-                  <div>
-                    <a href={`mailto:${email}`}><button>Email</button></a>
+                  <td>
+                    <a href={`mailto:${email}`}>
+                      <button>Email</button>
+                    </a>
                     {userId === currentUser.uid ? (
-                      <td>
-                        <button onClick={deleteAlert}>Remove</button>
-                      </td>
+                      <button onClick={deleteAlert}>Remove</button>
                     ) : null}
-                  </div>
+                  </td>
                 </tr>
               )
             )}

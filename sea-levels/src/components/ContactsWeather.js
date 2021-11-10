@@ -20,22 +20,21 @@ const ContactsWeather = (props) => {
       ref.where("userID", "==", props.user).onSnapshot((querySnapshot) => {
         const items = [];
         querySnapshot.forEach((doc) => {
-          items.push(doc.data());
+          console.log(doc)
+          items.push({...doc.data(),docID: doc.id});
         });
         setLists(items);
+      
       });
     };
     fetchContactsList();
   }, [props.user]);
 
-  const deleteContact = async () => {
+  const deleteContact = async (docID) => {
+    console.log(docID)
     try {
       const db = app.firestore();
-      const remove = await db.collection("contacts").doc().where('contactID', '==', lists.contactID);
-      remove.delete();
-      console.log(remove)
-      // await db.collection("contacts").doc(props.user).update({});
-      // await db.collection("contacts").doc(props.user).delete();
+      db.collection('contacts').doc(docID).delete()
     } catch (error) {
       console.log(error);
     }
@@ -65,7 +64,7 @@ const ContactsWeather = (props) => {
               </span>
             </span>
           </div>
-          <button onClick={deleteContact}>Delete</button>
+          <button onClick={deleteContact.bind(this,list.docID)}>Delete</button>
         </div>
       ))}
 
