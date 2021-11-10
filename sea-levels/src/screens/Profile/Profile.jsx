@@ -105,8 +105,6 @@ const Profile = ({ user, changeNavAvatar }) => {
 		const fetchUserData = async () => {
 			if (!user) return;
 
-			console.log(user);
-
 			try {
 				const db = app.firestore();
 				const doc = await db.collection('users').doc(user).get();
