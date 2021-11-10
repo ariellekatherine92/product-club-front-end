@@ -45,7 +45,7 @@ export default function Footer() {
                     <h5>Join our mailing list!</h5>
                     <form className="email-form">
                         <input type="text" email="email" />
-                        <button onSubmit className="subscribe-btn">
+                        <button  className="subscribe-btn">
                             Subscribe
                         </button>
                     </form>
