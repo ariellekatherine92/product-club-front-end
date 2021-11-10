@@ -43,3 +43,29 @@ nav.page-nav > ul > li > a {
     color: #000;
     text-decoration: none;
 }
+
+nav.page-nav .avatar-container {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    transition: transform 250ms;
+}
+
+nav.page-nav .avatar-container .avatar-mask {
+    border-radius: 50%;
+    overflow: hidden;
+    height: 32px;
+    width: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav.page-nav .avatar-container .avatar-mask .avatar {
+    height: 32px;
+    width: auto;
+}
+
+nav.page-nav .avatar-container:hover {
+    transform: scale(1.2);
+}
