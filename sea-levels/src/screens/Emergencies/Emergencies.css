@@ -68,3 +68,16 @@
     color: #B3B3B3;
 }
 
+.email-button, .remove-button{
+    border-radius: 1rem;
+    padding: 0 50;
+    height: 40px;
+    margin-right: 10%;
+    margin-top: 15%;
+    background-color: #624F6D;
+    font-family: Futura;
+    font-size: 20px;
+    color: #FFFFFF;
+    box-sizing: border-box;
+}
+
