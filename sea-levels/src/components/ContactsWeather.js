@@ -42,7 +42,7 @@ const ContactsWeather = (props) => {
   };
   return (
     <div className="contacts-weather">
-      <h3>Contact</h3>
+      <h3>Contacts</h3>
       {lists.map((list) => (
         <div key={list.contactID} className="contact-card">
           <div className="contact-info">
