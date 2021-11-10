@@ -66,7 +66,7 @@ const Profile = ({ user, changeNavAvatar }) => {
 
 		await db.collection('users').doc(user).set({ ...form, photoURL });
 
-		history.push('/');
+		history.push('/dashboard');
 	};
 
 	const onFileChange = ({ target }) => {
