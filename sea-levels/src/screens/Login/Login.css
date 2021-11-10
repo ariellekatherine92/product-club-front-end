@@ -17,6 +17,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding-top: 100px;
 }
 
 .login-page .form-content .wrapper {
@@ -78,7 +79,7 @@
 }
 
 .login-page .join {
-    padding-top: 12rem;
+    margin-top: 12px;
     color: #616161;
     font-size: 16px;
     text-align: center;
