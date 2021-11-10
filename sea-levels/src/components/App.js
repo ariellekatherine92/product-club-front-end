@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { auth } from "../services/firebase";
 import app from "../services/firebase";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -23,6 +23,7 @@ import Contact from "./Contact";
 import About_Main from "./About_Main";
 import FAQ from "./FAQ";
 import SignOut from "../screens/SignOut/SignOut";
+import defaultAvatar from '../images/default-avatar.png';
 
 function App() {
   const [weather, setWeather] = useState([]);
@@ -30,7 +31,18 @@ function App() {
   const [profile, setProfile] = useState({});
   const [isOpen, setIsOpen] = useState(false);
   const location = useSelector((state) => state.location);
-  const [toggleFetch, setToggleFetch] = useState(false)
+  const [toggleFetch, setToggleFetch] = useState(false);
+  const [avatar, setAvatar] = useState();
+
+  const currentUser = app.auth().currentUser;
+
+  useEffect(() => {
+    setAvatar(currentUser?.photoURL || defaultAvatar);
+  }, [currentUser]);
+
+  const changeNavAvatar = navAvatar => {
+    setAvatar(navAvatar);
+  };
 
   //Gets user objects
   useEffect(() => {
@@ -85,7 +97,7 @@ function App() {
   return (
     <Router>
       <AuthProvider>
-        <Navbar setIsOpen={setIsOpen} isOpen={isOpen} user={user} />
+        <Navbar setIsOpen={setIsOpen} isOpen={isOpen} user={user} avatar={avatar} />
         {isOpen ? (
           <Sos
             user={user}
@@ -114,7 +126,7 @@ function App() {
             />
           </Route>
           <Route path="/profile">
-            <Profile user={user} profile={profile}/>
+            <Profile user={user} profile={profile} changeNavAvatar={changeNavAvatar} />
           </Route>
           <Route path="/dashboard">
             <Dashboard weather={weather} profile={profile} user={user} setIsOpen={setIsOpen} 
