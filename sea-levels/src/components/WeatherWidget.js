@@ -14,14 +14,18 @@ const WeatherWidget = ({ username, weather, ...props  }) => {
 
   
   useEffect(() => {
-    const fetchWeatherSeverity = async () => {
-      const getSeverity = await axios.get(`https://api.weather.gov/alerts/active?area=${props.profile.state}`);
-      const severityResponse = getSeverity.data;
-      if (!!severityResponse.features[0]?.properties?.severity){
-        setSeverity(severityResponse.features[0].properties.severity)
+    if(props.profile?.state) {
+      const fetchWeatherSeverity = async () => {
+        const getSeverity = await axios.get(`https://api.weather.gov/alerts/active?area=${props.profile?.state}`);
+        const severityResponse = getSeverity.data;
+        if (!!severityResponse.features[0]?.properties?.severity){
+          setSeverity(severityResponse.features[0].properties.severity)
+        }
       }
+      fetchWeatherSeverity()
+    } else {
+      console.log(`No State Listed In Profile`)
     }
-    fetchWeatherSeverity()
   },[props.profile?.state])
 
   const warningColors = () => {
@@ -33,7 +37,7 @@ const WeatherWidget = ({ username, weather, ...props  }) => {
       case 'Moderate':
         return <div className='divDisplay'><span>{ALERTS.WATCH.label}</span> <div className="alert-status watch" /></div>;
       case 'Severe':
-        return <div className='divDisplay'><span>{ALERTS.WARNING.label}</span> <div className="alert-status advisory" /></div>;
+        return <div className='divDisplay'><span>{ALERTS.WARNING.label}</span> <div className="alert-status warning" /></div>;
       case 'Extreme':
         return <div className='divDisplay'><span>{ALERTS.ADVISORY.label}</span> <div className="alert-status advisory" /></div>;
       default:
