@@ -76,11 +76,11 @@ const WeatherWidget = ({ username, weather, ...props  }) => {
       <div className="weather-details">
         <div className="conditions">
           <img className="weather-icon" src={weather?.current?.condition?.icon} alt={weather?.current?.condition?.icon}/>
-          <span className="temp">{weather.current?.temp_f}</span>
+          <span className="temp">{Math.round(weather.current?.temp_f)}</span>
         </div>
 
         <div>
-          <span>{`Feels like ${weather.current?.feelslike_f}°`}</span>
+          <span>{`Feels like ${Math.round(weather.current?.feelslike_f)}°`}</span>
         </div>
 
         <div className="uv">
