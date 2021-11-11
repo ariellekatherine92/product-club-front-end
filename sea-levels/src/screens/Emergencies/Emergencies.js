@@ -36,8 +36,9 @@ const Emergencies = (props) => {
               const userData = userSnapshot.data();
               if (!userData) {
                 reject();
+              } else {
+                resolve(userData.photoURL);
               }
-              resolve(userData.photoURL);
             });
         });
 
